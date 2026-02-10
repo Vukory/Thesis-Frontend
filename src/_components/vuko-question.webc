@@ -1,0 +1,39 @@
+<section webc:root="override" class="card">
+  <slot></slot>
+</section>
+
+<style webc:scoped>
+  :host.card {
+    color: var(--vuko-text-color);
+    position: relative;
+
+    h2 {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    input[type="radio"],
+    input[type="checkbox"] {
+      transform: scale(1.6);
+    }
+  }
+
+  :host::after {
+    content: "";
+    position: absolute;
+    height: calc(100% + 16px);
+    width: calc(100% + 16px);
+    inset: -8px;
+    background-image:
+      url(/assets/flower-2.svg),
+      url(/assets/flower-1.svg);
+    background-repeat: no-repeat;
+    background-size:
+      90px,
+      60px;
+    background-position:
+      top right,
+      bottom left;
+    pointer-events: none;
+  }
+</style>

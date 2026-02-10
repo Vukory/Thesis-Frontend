@@ -1,0 +1,70 @@
+<div webc:root>
+  <span class="note">Select all that apply.</span>
+  <span webc:for="(answer, i) of answers">
+    <input :id="`${name}-${i}`" type="checkbox" :name="name" :value="answer" />
+    <label :for="`${name}-${i}`" @text="answer"></label>
+  </span>
+  <span webc:if="other">
+    <input :id="`${name}-other`" class="other-checkbox" type="checkbox" :name="name" value="other" />
+    <label :id="`${name}-other-label`" :for="`${name}-other`">Other</label>:
+    <input class="other-text" :aria-labelledby="`${name}-other-label`" type="text"
+      :name="`${name}-other`" maxLength="100" />
+  </span>
+</div>
+
+<style webc:scoped>
+  :host {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    .note {
+      font-size: 14px;
+      color: var(--vuko-subtext-color);
+      font-style: italic;
+    }
+
+    span {
+      display: flex;
+    }
+
+    input[type="checkbox"] {
+      margin-right: .8rem;
+    }
+
+    input[type="text"] {
+      margin-left: .5rem;
+    }
+  }
+</style>
+
+<script>
+  class MultipleChoice extends HTMLElement {
+    /** @type {HTMLInputElement=} */
+    #otherCheckbox;
+    /** @type {HTMLInputElement=} */
+    #otherText;
+
+    connectedCallback() {
+      this.#otherCheckbox = this.querySelector('.other-checkbox');
+
+      if (!this.#otherCheckbox) {
+        return;
+      }
+
+      this.#otherText = this.querySelector('.other-text');
+
+      this.#otherCheckbox.addEventListener('click', () => {
+        if (this.#otherCheckbox.checked) {
+          this.#otherText.focus();
+        }
+      });
+
+      this.#otherText.addEventListener('input', () => {
+        this.#otherCheckbox.checked = true;
+      });
+    }
+  }
+
+  customElements.define('vuko-multiple-choice', MultipleChoice);
+</script>

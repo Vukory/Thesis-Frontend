@@ -1,0 +1,125 @@
+<div webc:root="override" class="card welcome">
+  <span class="outline1"></span>
+  <span class="outline2"></span>
+  <picture>
+    <source srcset="/assets/hi-static.gif"
+      media="(prefers-reduced-motion: reduce)" />
+    <img src="/assets/hi.gif" alt="Hi again!" />
+  </picture>
+  <p>
+    Thanks so much for taking the time to help with my research!
+  </p>
+  <p>
+    This survey asks about your experience with the
+    <a href="https://svgo.dev" target="_blank">SVGO.dev</a> website and the
+    cookie banner you saw. It takes about 2 minutes, and all of the
+    questions
+    are optional!
+  </p>
+  <p>
+    Want free stickers? Leave your email at the end and I'll send you a code
+    for a sticker pack from my web shop as a thank you!
+  </p>
+</div>
+
+<style webc:scoped>
+  :host.welcome {
+    text-align: center;
+    color: var(--vuko-accent-color);
+    position: relative;
+    overflow: clip;
+    padding: 40% 48px;
+    display: block;
+
+    img {
+      width: 100%;
+      max-width: 208px;
+    }
+
+    p {
+      font-family: Scabber, var(--vuko-font);
+    }
+
+    img,
+    p {
+      margin-bottom: 1rem;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      inset: 0;
+      background-image:
+        url("/assets/sticker-frame-top.png"),
+        url("/assets/sticker-frame-bottom.png");
+      background-repeat: no-repeat;
+      background-position: top, bottom;
+      background-size: contain;
+      pointer-events: none;
+    }
+
+    .outline1,
+    .outline2 {
+      width: 50%;
+      height: 100%;
+      shape-margin: 1rem;
+      pointer-events: none;
+    }
+
+    .outline1 {
+      float: left;
+      shape-outside: ellipse(124px 253px at 3% 176cqh);
+    }
+
+    .outline2 {
+      float: right;
+      shape-outside: ellipse(124px 253px at 97% 176cqh);
+    }
+
+    @container (width > 672px) {
+      height: 372px;
+      padding: 48px;
+
+      &::before {
+        background-image:
+          url("/assets/sticker-frame-left.png"),
+          url("/assets/sticker-frame-right.png");
+        background-position: left, right;
+      }
+
+      .outline1 {
+        shape-outside: polygon(0 0,
+            171px 0,
+            146px 10%,
+            119px 20%,
+            86px 30%,
+            97px 40%,
+            107px 50%,
+            65px 60%,
+            81px 70%,
+            83px 80%,
+            76px 90%,
+            110px 100%,
+            0 100%);
+      }
+
+      .outline2 {
+        shape-outside: polygon(100% 0,
+            calc(100% - 171px) 0,
+            calc(100% - 146px) 10%,
+            calc(100% - 119px) 20%,
+            calc(100% - 86px) 30%,
+            calc(100% - 97px) 40%,
+            calc(100% - 107px) 50%,
+            calc(100% - 65px) 60%,
+            calc(100% - 81px) 70%,
+            calc(100% - 83px) 80%,
+            calc(100% - 76px) 90%,
+            calc(100% - 110px) 100%,
+            100% 100%);
+      }
+    }
+  }
+</style>

@@ -1,0 +1,68 @@
+<altcha-widget webc:root="override"
+  :challengeurl="`${config.apiBaseUrl}/challenge`"></altcha-widget>
+
+<style webc:scoped>
+  .altcha {
+    --altcha-color-base: var(--vuko-card-color);
+    --altcha-color-text: var(--vuko-accent-color);
+
+    align-items: center;
+    justify-content: center;
+    height: 130px;
+    width: 100%;
+    max-width: 360px;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px var(--vuko-card-shadow);
+    overflow: clip;
+
+    margin-bottom: 1rem;
+
+    .altcha-logo {
+      display: none;
+    }
+  }
+
+  .altcha::before {
+    content: '';
+    position: absolute;
+    background: no-repeat url(/assets/captcha-robot.png);
+    background-size: contain;
+    background-position: bottom left;
+    height: 100%;
+    aspect-ratio: 1;
+    pointer-events: none;
+    bottom: 0;
+    left: 0;
+    transition: bottom 1s, left 1s;
+
+    @media (prefers-reduced-motion) {
+      transition: none;
+    }
+  }
+
+  .altcha[data-state=verifying] {
+    &::before {
+      bottom: -130px;
+      left: -130px;
+    }
+  }
+
+  .altcha[data-state=verified] {
+    &::before {
+      background-image: url(/assets/captcha-human.png);
+    }
+  }
+
+  .altcha-footer {
+    position: absolute;
+    bottom: .5rem;
+    right: .5rem;
+    font-size: 10px;
+    font-family: var(--vuko-font);
+
+    &:hover {
+      color: hsl(from var(--altcha-color-text) h s calc(l + 5));
+    }
+  }
+</style>

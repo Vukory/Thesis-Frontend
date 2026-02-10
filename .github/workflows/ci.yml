@@ -1,0 +1,55 @@
+env:
+  NODE: 24
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - run: corepack enable
+      - uses: actions/setup-node@v4
+        with: &setup-node-config
+          node-version: ${{ env.NODE }}
+          registry-url: https://registry.npmjs.org
+          cache: 'yarn'
+      - run: yarn install --immutable
+      - run: yarn run build
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - run: corepack enable
+      - uses: actions/setup-node@v4
+        with: *setup-node-config
+      - run: yarn install --immutable
+      - run: yarn run lint
+  typecheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - run: corepack enable
+      - uses: actions/setup-node@v4
+        with: *setup-node-config
+      - run: yarn install --immutable
+      - run: yarn run typecheck
+  a11y:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - run: corepack enable
+      - uses: actions/setup-node@v4
+        with: *setup-node-config
+      - run: yarn install --immutable
+      - run: yarn run build
+      - run: yarn run a11y:ci

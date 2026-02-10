@@ -1,0 +1,35 @@
+<div webc:root="override">
+  <span webc:for="(label, i) of labels">
+    <input :id="`${name}-${i}`" type="radio" :name="name" :value="i + 1" />
+    <label :for="`${name}-${i}`" @text="label"></label>
+  </span>
+</div>
+
+<style webc:scoped>
+  :host {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    input {
+      margin-right: .8rem;
+    }
+
+    @media (min-width: 577px) {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+
+      span {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+      }
+
+      input {
+        margin: .5rem 0 0 0;
+      }
+    }
+  }
+</style>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <template webc:type="11ty" 11ty:type="njk">
+  {% include "head.njk" %}
+  </template>
+</head>
+
+<body>
+  <main class="thank-you card">
+    <picture>
+      <source srcset="/assets/thank-you-peeper-wide.png"
+        media="(min-width: 997px)" />
+      <img class="peeper" src="/assets/thank-you-peeper.png" alt="" />
+    </picture>
+    <div class="copy">
+      <picture>
+        <source srcset="/assets/amazing-static.gif"
+          media="(prefers-reduced-motion: reduce)" />
+        <img src="/assets/amazing.gif" alt="You're amazing!" />
+      </picture>
+      <p>
+        I really appreciate you taking the time to help me out! Every response
+        brings me one step closer to finishing my thesis!
+      </p>
+      <p>
+        Left your email? Your free sticker code will be on its way towards the
+        end of my research.
+      </p>
+      <picture>
+        <source srcset="/assets/thank-you-static.gif"
+          media="(prefers-reduced-motion: reduce)" />
+        <img src="/assets/thank-you.gif" alt="Thank you!" />
+      </picture>
+    </div>
+  </main>
+</body>
+
+</html>
+
+<style>
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow-x: hidden;
+  }
+
+  .thank-you {
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--vuko-accent-color);
+    max-width: 906px;
+    box-sizing: border-box;
+    margin: 1rem;
+    gap: 1.5rem;
+
+    img {
+      max-width: 100%;
+    }
+  }
+
+  .thank-you .copy {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  p {
+    font-family: Scabber, var(--vuko-font);
+    font-weight: 400;
+  }
+
+  @media (min-width: 997px) {
+    .thank-you {
+      flex-direction: row-reverse;
+      position: relative;
+      justify-content: start;
+    }
+
+    .thank-you .copy {
+      max-width: 60%;
+    }
+
+    .peeper {
+      position: absolute;
+      right: -80px;
+      bottom: 0;
+    }
+  }
+</style>

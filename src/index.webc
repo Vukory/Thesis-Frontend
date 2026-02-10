@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <template webc:type="11ty" 11ty:type="njk">
+  {% include "head.njk" %}
+  </template>
+  <script :src="getBundleFileUrl('js')" webc:keep defer></script>
+  <link rel="preload" href="/assets/header.png" as="image"
+    fetchpriority="high" />
+  <script webc:keep async src="/lib/altcha.js" type="module"></script>
+</head>
+
+<body>
+  <main>
+    <header>
+      <h1>
+        <picture>
+          <source srcset="/assets/title-static.gif"
+            media="(prefers-reduced-motion: reduce)" />
+          <img src="/assets/title.gif"
+            alt="User Behavior in Design: A Survey" />
+        </picture>
+      </h1>
+    </header>
+    <vuko-welcome></vuko-welcome>
+    <form :action="`${config.apiBaseUrl}/submit`" method="post">
+      <vuko-question>
+        <h2>How old are you?</h2>
+        <vuko-single-choice @name="ageBand" :@answers="[
+            'Under 25 years old',
+            '25-34 years old',
+            '35-44 years old',
+            '45-54 years old',
+            '55-64 years old',
+            '65 years or older',
+            'Prefer not to say',
+          ]"></vuko-single-choice>
+      </vuko-question>
+      <vuko-question>
+        <h2>What is your first impression of SVGO.dev?</h2>
+        <vuko-likert @name="impressionOfWebsite" :@labels="[
+          'Very negative',
+          'Somewhat negative',
+          'Neutral',
+          'Somewhat positive',
+          'Very positive',
+        ]">
+        </vuko-likert>
+      </vuko-question>
+      <vuko-question>
+        <h2>How trustworthy does the SVGO website feel to you?</h2>
+        <vuko-likert @name="websiteTrust" :@labels="[
+          'Not trustworthy at all',
+          'Slightly trustworthy',
+          'Moderately trustworthy',
+          'Very trustworthy',
+          'Extremely trustworthy',
+        ]"></vuko-likert>
+      </vuko-question>
+      <vuko-question>
+        <h2>Which words do you feel best describes the tone of the SVGO website?
+        </h2>
+        <vuko-multiple-choice @name="websiteKeywords" :@answers="[
+            'Professional',
+            'Corporate',
+            'Friendly',
+            'Welcoming',
+            'Modern',
+            'Technical',
+            'Playful',
+            'Cold',
+            'Generic',
+            'Unique',
+          ]" :@other="true"></vuko-multiple-choice>
+      </vuko-question>
+      <vuko-question>
+        <h2>How often do websites you browse ask for cookie consent?</h2>
+        <vuko-single-choice @name="promptFrequency" :@answers="[
+            'Rarely',
+            'Sometimes',
+            'Often',
+            'Almost always',
+          ]"></vuko-single-choice>
+      </vuko-question>
+      <vuko-question>
+        <h2>
+          In general, how do you feel when websites show you cookie consent
+          banners/popups?
+        </h2>
+        <vuko-likert @name="feelingTowardsPrompts" :@labels="[
+          'Very negative',
+          'Somewhat negative',
+          'Neutral',
+          'Somewhat positive',
+          'Very positive',
+        ]"></vuko-likert>
+      </vuko-question>
+      <vuko-question>
+        <h2>
+          How much do cookie banners typically affect your first impression of a
+          website?
+        </h2>
+        <vuko-likert @name="promptEffectsImpression" :@labels="[
+          'Not at all',
+          'Slightly',
+          'Moderately',
+          'Quite a bit',
+          'Very much',
+        ]"></vuko-likert>
+      </vuko-question>
+      <vuko-question>
+        <h2>
+          How would you describe your first impression of SVGO's cookie banner?
+        </h2>
+        <vuko-multiple-choice @name="promptImpression" :@answers="[
+            'Professional',
+            'Friendly',
+            'Trustworthy',
+            'Fits the website',
+            'Neutral',
+            'Annoying',
+            'Distracting',
+            'Confusing',
+          ]" :@other="true"></vuko-multiple-choice>
+      </vuko-question>
+      <vuko-question>
+        <h2>How did the cookie banner affect your trust in the SVGO website?
+        </h2>
+        <vuko-likert @name="promptTrust" :@labels="[
+          'Significantly decreased my trust',
+          'Slightly decreased my trust',
+          'No effect',
+          'Slightly increased my trust',
+          'Significantly increased my trust',
+        ]"></vuko-likert>
+      </vuko-question>
+      <vuko-question>
+        <h2>
+          Do you believe that the cookie banner you saw on the SVGO website
+          follows privacy regulations?
+        </h2>
+        <vuko-single-choice @name="isCompliant" :@answers="[
+            'Yes',
+            'No',
+            'I\'m not sure',
+          ]"></vuko-single-choice>
+      </vuko-question>
+      <vuko-question>
+        <h2>What influenced your choice to accept or reject cookies on the SVGO
+          website?</h2>
+        <vuko-multiple-choice @name="promptInfluence" :@answers="[
+            'Design/appearance of the cookie banner',
+            'Trust in the website',
+            'Habit (I usually accept/reject without thought)',
+            'Preservation of privacy',
+            'Clear explanation of what cookies are used for',
+            'I just want the banner to go away',
+          ]" :@other="true"></vuko-multiple-choice>
+      </vuko-question>
+      <vuko-question>
+        <h2>
+          Do you use any tools that automate responding to cookie banners?
+        </h2>
+        <vuko-multiple-choice @name="promptAutomation" :@answers="[
+              'Brave browser (built-in blocking)',
+              '&quot;I don\'t care about cookies&quot; / &quot;I still don\'t care about cookies browser&quot; extension',
+              'Consent-O-Matic',
+              'I don\'t use any such tools'
+            ]" :@other="true"></vuko-multiple-choice>
+      </vuko-question>
+      <vuko-question>
+        <h2 id="anythingElse-label">Anything else you'd like to share?</h2>
+        <textarea name="anythingElse" placeholder="Answer text"
+          aria-labelledby="anythingElse-label" maxlength="1024"></textarea>
+      </vuko-question>
+      <vuko-question>
+        <h2 id="email-label">
+          If you'd like free stickers, leave your email address below for a
+          coupon code.
+        </h2>
+        <input name="email" placeholder="Email" type="email"
+          aria-labelledby="email-label" maxlength="100" />
+      </vuko-question>
+      <section>
+        <vuko-altcha-widget :@config="config"></vuko-altcha-widget>
+        <vuko-submit></vuko-submit>
+      </section>
+    </form>
+    <img class="peeper" src="/assets/peeper.png" alt="" />
+  </main>
+</body>
+
+</html>
+
+<style>
+  body {
+    display: flex;
+    justify-content: center;
+    position: relative;
+  }
+
+  main {
+    width: 100%;
+    max-width: 760px;
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    container-type: inline-size;
+
+    &::after {
+      content: "";
+      width: 60%;
+      max-width: 396px;
+      aspect-ratio: 0.75862069;
+
+      @media (min-width: 1600px) {
+        display: none;
+      }
+    }
+  }
+
+  .peeper {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 60%;
+    max-width: 396px;
+    max-height: 522px;
+
+    @media (min-width: 1600px) {
+      position: fixed;
+    }
+  }
+
+  header {
+    height: var(--vuko-header-height);
+    width: 100%;
+    border-radius: 1rem;
+    background: no-repeat url("/assets/header.png") 43%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 15px var(--vuko-card-shadow);
+
+    img {
+      box-sizing: border-box;
+      padding: 2rem;
+      max-width: 100%;
+      max-height: var(--vuko-header-height);
+      filter: drop-shadow(0 6px 4px #3c0c014a);
+    }
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+</style>
+
+<script>
+  const { search } = window.location;
+  const urlSearchParams = new URLSearchParams(search);
+  const variant = urlSearchParams.get('utm_content');
+
+  if (variant) {
+    const form = /** @type {HTMLFormElement} */ (document.querySelector('form'));
+    form.action += `?utm_content=${encodeURIComponent(variant)}`;
+  }
+</script>

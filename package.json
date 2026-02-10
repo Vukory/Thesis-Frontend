@@ -1,0 +1,39 @@
+{
+  "packageManager": "yarn@4.12.0",
+  "name": "vukory-survey",
+  "version": "1.0.0",
+  "description": "Survey for cookie banner study conducted on SVGO.dev.",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development eleventy --serve",
+    "start": "cross-env NODE_ENV=production eleventy --serve",
+    "build": "cross-env NODE_ENV=production eleventy",
+    "clean": "rimraf _site/",
+    "lint": "eslint .",
+    "format": "eslint --fix .",
+    "typecheck": "tsc",
+    "a11y": "pa11y-ci --sitemap http://localhost:8080/sitemap.xml",
+    "a11y:ci": "start-server-and-test 'serve _site -l 8080' 'http://localhost:8080' 'yarn run a11y'",
+    "qa": "yarn run lint && yarn run typecheck && yarn run a11y"
+  },
+  "author": "Vukory <hi@vukory.art>",
+  "license": "UNLICENSED",
+  "type": "module",
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.2",
+    "@11ty/eleventy-plugin-webc": "^0.11.2",
+    "@eslint/js": "^9.39.2",
+    "cross-env": "^10.1.0",
+    "cssnano": "^7.1.2",
+    "eslint": "^9.39.2",
+    "eslint-plugin-import": "^2.32.0",
+    "globals": "^17.3.0",
+    "pa11y-ci": "^4.0.1",
+    "postcss": "^8.5.6",
+    "postcss-preset-env": "^11.1.3",
+    "rimraf": "^6.1.2",
+    "serve": "^14.2.5",
+    "start-server-and-test": "^2.1.3",
+    "svgo": "^4.0.0",
+    "typescript": "^5.9.3"
+  }
+}

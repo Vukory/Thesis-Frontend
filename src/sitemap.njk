@@ -1,0 +1,16 @@
+---
+permalink: /sitemap.xml
+excludeFromSitemap: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  {%- for page in collections.all %}
+  {% if page.data.excludeFromSitemap !== true %}
+  <url>
+    <loc>{{ config.baseUrl }}{{ page.url }}</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.0</priority>
+  </url>
+  {% endif %}
+  {%- endfor %}
+</urlset>

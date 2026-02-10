@@ -1,0 +1,2 @@
+# https://en.wikipedia.org/wiki/List_of_Unicode_characters#Basic_Latin
+U+0020-007E

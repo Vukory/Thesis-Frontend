@@ -1,0 +1,18 @@
+<div webc:root="override">
+  <span webc:for="(answer, i) of answers">
+    <input :id="`${name}-${i}`" type="radio" :name="name" :value="answer" />
+    <label :for="`${name}-${i}`" @text="answer"></label>
+  </span>
+</div>
+
+<style webc:scoped>
+  :host {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    input {
+      margin-right: .8rem;
+    }
+  }
+</style>
