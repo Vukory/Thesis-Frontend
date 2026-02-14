@@ -46,6 +46,8 @@ jobs:
   a11y:
     runs-on: ubuntu-latest
     steps:
+      # https://github.com/pa11y/pa11y/blob/2055ee510163d871e874f6ea0bfe895f84bbac4a/.github/workflows/tests.yml#L37
+      - run: echo 0 | sudo tee /proc/sys/kernel/apparmor_restrict_unprivileged_userns
       - uses: actions/checkout@v6
       - run: corepack enable
       - uses: actions/setup-node@v4
