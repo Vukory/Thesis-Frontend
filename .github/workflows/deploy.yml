@@ -18,6 +18,7 @@ jobs:
           node-version: 24
           cache: 'yarn'
       - run: yarn install --immutable
+      - run: sudo apt-get install fonttools
       - run: yarn run build
       - uses: peaceiris/actions-gh-pages@v4
         with:
