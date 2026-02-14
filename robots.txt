@@ -1,0 +1,3 @@
+# Block everything, there's no reason for a crawler to be here.
+User-agent: *
+Disallow: /
