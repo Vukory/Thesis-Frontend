@@ -8,6 +8,7 @@ import cssnano from 'cssnano';
 import postcss from 'postcss';
 import postcssPresetEnv from 'postcss-preset-env';
 import { optimize } from 'svgo';
+import config from './src/_data/config.js';
 
 const postcssProcessor = postcss([
   postcssPresetEnv,
@@ -38,6 +39,7 @@ const svgoConfig = {
   ]
 };
 
+let pyftsubsetWarning = false;
 
 export default function (eleventyConfig) {
   eleventyConfig.setOutputDirectory('./_site/');
@@ -98,7 +100,16 @@ export default function (eleventyConfig) {
       } catch (/** @type {any} */ error) {
         switch (error.code) {
           case 'ENOENT':
-            console.warn('%s pyftsubset not installed, skipping font optimizations', styleText('red', '×'));
+            if (config.env === 'production') {
+              console.error('%s pyftsubset not installed, required for production builds', styleText('red', '×'));
+              process.exit(1);
+            }
+
+            if (!pyftsubsetWarning) {
+              console.warn('%s pyftsubset not installed, skipping font optimizations', styleText('red', '×'));
+              pyftsubsetWarning = true;
+            }
+
             await fs.copyFile(
               path.join(font.parentPath, font.name),
               path.join(output, 'fonts', font.name)
