@@ -68,13 +68,3 @@ A font is made up of many glyphs, like `a`, `0`, `?`. However, also `°`, `á`, 
 We define ranges of characters to keep, and then _subset_ the glyphs into a smaller font, often saving upwards of 50% of the bytes.
 
 In our case, we reduce Scabber from 19 KB to 10 KB!
-
-## Cross Browser Caveats
-
-Unfortunately, across the major browsers sometimes features don't behave as expected. We've encountered that a few times throughout this project. Many of them are resolved through PostCSS, which normalizes our CSS, but it can't cover all quirks/bugs.
-
-### `shape-outside`
-
-Among the major browsers, Safari has the worst support for `shape-outside`. We originally specified the `ellipse()` y position as a percentage (`%`), but that doesn't work when the container is has an automatic size. It worked as expected in Firefox and Chromium, but it was stuck on the default y position on Safari. To work around this, we specified the units in `cqh` (container query height) instead.
-
-Since we're only targetting baseline browsers, this is acceptable for us.

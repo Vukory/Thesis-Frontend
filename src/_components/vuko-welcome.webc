@@ -1,48 +1,64 @@
-<div webc:root="override" class="card welcome">
+<div webc:root="override" class="card">
   <span class="outline1"></span>
   <span class="outline2"></span>
-  <picture>
-    <source srcset="/assets/hi-static.gif"
-      media="(prefers-reduced-motion: reduce)" />
-    <img src="/assets/hi.gif" alt="Hi again!" />
-  </picture>
-  <p>
-    Thanks so much for taking the time to help with my research!
-  </p>
-  <p>
-    This survey asks about your experience with the
-    <a href="https://svgo.dev" target="_blank">SVGO.dev</a> website and the
-    cookie banner you saw. It takes about 2 minutes, and all of the
-    questions
-    are optional!
-  </p>
-  <p>
-    Want free stickers? Leave your email at the end and I'll send you a code
-    for a sticker pack from my web shop as a thank you!
-  </p>
+  <div class="welcome">
+    <picture>
+      <source srcset="/assets/hi-static.gif"
+        media="(prefers-reduced-motion: reduce)" />
+      <img src="/assets/hi.gif" alt="Hi again!" />
+    </picture>
+    <p>Thanks so much for taking the time to help with my research!</p>
+    <p>
+      This survey asks about your experience with the
+      <a href="https://svgo.dev" target="_blank">SVGO.dev</a> website and the
+      cookie banner you saw. It takes about 2 minutes, and all of the questions
+      are optional!
+    </p>
+    <p>
+      Want free stickers? Leave your email at the end and I'll send you a code
+      for a sticker pack from my web shop as a thank you!
+    </p>
+  </div>
 </div>
 
 <style webc:scoped>
-  :host.welcome {
-    text-align: center;
-    color: var(--vuko-accent-color);
+  :host.card {
     position: relative;
     overflow: clip;
-    padding: 40% 48px;
-    display: block;
+    padding: 0;
 
-    img {
-      width: 100%;
-      max-width: 208px;
+    .outline1,
+    .outline2 {
+      width: 50%;
+      height: 100%;
+      shape-margin: 1rem;
+      pointer-events: none;
     }
 
-    p {
-      font-family: Scabber, var(--vuko-font);
+    .outline1 {
+      float: left;
+      shape-outside: polygon(0 100%,
+          0% calc(100% - 100cqw / 1.8 * .85),
+          10% calc(100% - 100cqw / 1.8 * .86),
+          20% calc(100% - 100cqw / 1.8 * .9),
+          30% calc(100% - 100cqw / 1.8 * .8),
+          40% calc(100% - 100cqw / 1.8 * .7),
+          50% calc(100% - 100cqw / 1.8 * .55),
+          60% calc(100% - 100cqw / 1.8 * .5),
+          100% calc(100% - 100cqw / 1.8 * .35));
     }
 
-    img,
-    p {
-      margin-bottom: 1rem;
+    .outline2 {
+      float: right;
+      shape-outside: polygon(100% 100%,
+          100% calc(100% - 100cqw / 1.8 * .85),
+          90% calc(100% - 100cqw / 1.8 * .86),
+          80% calc(100% - 100cqw / 1.8 * .9),
+          70% calc(100% - 100cqw / 1.8 * .8),
+          60% calc(100% - 100cqw / 1.8 * .7),
+          50% calc(100% - 100cqw / 1.8 * .55),
+          40% calc(100% - 100cqw / 1.8 * .5),
+          0 calc(100% - 100cqw / 1.8 * .35));
     }
 
     &::before {
@@ -59,28 +75,63 @@
       background-size: contain;
       pointer-events: none;
     }
+  }
 
-    .outline1,
-    .outline2 {
-      width: 50%;
-      height: 100%;
-      shape-margin: 1rem;
-      pointer-events: none;
+  .welcome {
+    text-align: center;
+    color: var(--vuko-accent-color);
+    padding: 40% 48px;
+
+    img {
+      width: 100%;
+      max-width: 208px;
     }
 
-    .outline1 {
-      float: left;
-      shape-outside: ellipse(124px 253px at 3% 176cqh);
+    p {
+      font-family: Scabber, var(--vuko-font);
     }
 
-    .outline2 {
-      float: right;
-      shape-outside: ellipse(124px 253px at 97% 176cqh);
+    img,
+    p:not(:last-child) {
+      margin-bottom: 1rem;
     }
+  }
 
-    @container (width > 672px) {
-      height: 372px;
-      padding: 48px;
+  @container (width > 672px) {
+    :host.card {
+      height: 360px;
+
+      .outline1 {
+        shape-outside: polygon(0 0,
+            166px 0,
+            168px 10%,
+            123px 20%,
+            143px 30%,
+            142px 40%,
+            109px 50%,
+            113px 60%,
+            124px 70%,
+            126px 80%,
+            156px 90%,
+            162px 100%,
+            0 100%);
+      }
+
+      .outline2 {
+        shape-outside: polygon(100% 0,
+            calc(100% - 166px) 0,
+            calc(100% - 168px) 10%,
+            calc(100% - 123px) 20%,
+            calc(100% - 143px) 30%,
+            calc(100% - 142px) 40%,
+            calc(100% - 109px) 50%,
+            calc(100% - 113px) 60%,
+            calc(100% - 124px) 70%,
+            calc(100% - 126px) 80%,
+            calc(100% - 156px) 90%,
+            calc(100% - 162px) 100%,
+            100% 100%);
+      }
 
       &::before {
         background-image:
@@ -88,38 +139,10 @@
           url("/assets/sticker-frame-right.png");
         background-position: left, right;
       }
+    }
 
-      .outline1 {
-        shape-outside: polygon(0 0,
-            171px 0,
-            146px 10%,
-            119px 20%,
-            86px 30%,
-            97px 40%,
-            107px 50%,
-            65px 60%,
-            81px 70%,
-            83px 80%,
-            76px 90%,
-            110px 100%,
-            0 100%);
-      }
-
-      .outline2 {
-        shape-outside: polygon(100% 0,
-            calc(100% - 171px) 0,
-            calc(100% - 146px) 10%,
-            calc(100% - 119px) 20%,
-            calc(100% - 86px) 30%,
-            calc(100% - 97px) 40%,
-            calc(100% - 107px) 50%,
-            calc(100% - 65px) 60%,
-            calc(100% - 81px) 70%,
-            calc(100% - 83px) 80%,
-            calc(100% - 76px) 90%,
-            calc(100% - 110px) 100%,
-            100% 100%);
-      }
+    .welcome {
+      padding: 48px;
     }
   }
 </style>
