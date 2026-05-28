@@ -74,6 +74,10 @@ a {
   text-decoration: none;
 }
 
+.welcome {
+  line-height: 1.2rem;
+}
+
 textarea {
   min-height: 128px;
   resize: none;
