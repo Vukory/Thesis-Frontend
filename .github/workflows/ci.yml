@@ -54,6 +54,7 @@ jobs:
       - uses: actions/setup-node@v4
         with: *setup-node-config
       - run: yarn install --immutable
+      - run: npx puppeteer install chrome
       - run: sudo apt-get install fonttools
       - run: yarn run build
       - run: yarn run a11y:ci
