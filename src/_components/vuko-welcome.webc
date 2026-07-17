@@ -68,8 +68,8 @@
       width: 100%;
       inset: 0;
       background-image:
-        url("/assets/sticker-frame-top.png"),
-        url("/assets/sticker-frame-bottom.png");
+        url("/assets/sticker-frame-top.avif"),
+        url("/assets/sticker-frame-bottom.avif");
       background-repeat: no-repeat;
       background-position: top, bottom;
       background-size: contain;
@@ -135,8 +135,8 @@
 
       &::before {
         background-image:
-          url("/assets/sticker-frame-left.png"),
-          url("/assets/sticker-frame-right.png");
+          url("/assets/sticker-frame-left.avif"),
+          url("/assets/sticker-frame-right.avif");
         background-position: left, right;
       }
     }
