@@ -25,8 +25,7 @@
     </header>
     <vuko-welcome></vuko-welcome>
     <form :action="`${config.apiBaseUrl}/submit`" method="post">
-      <vuko-question>
-        <h2>How old are you?</h2>
+      <vuko-question @question="How old are you?">
         <vuko-single-choice @name="ageBand" :@answers="[
             'Under 25 years old',
             '25-34 years old',
@@ -37,11 +36,7 @@
             'Prefer not to say',
           ]"></vuko-single-choice>
       </vuko-question>
-      <vuko-question>
-        <h2>
-          How would you describe your technical knowledge? (select the option 
-          that best describes you)
-        </h2>
+      <vuko-question @question="How would you describe your technical knowledge? (select the option that best describes you)">
         <vuko-single-choice @name="techExpertise" :@answers="[
             'I have very little technical knowledge',
             'I am comfortable using everyday technology',
@@ -50,16 +45,14 @@
             'I work professionally in IT or another technical field',
             ]"></vuko-single-choice>
       </vuko-question>
-      <vuko-question>
-        <h2>How often do you visit SVGO.dev?</h2>
+      <vuko-question @question="How often do you visit SVGO.dev?">
         <vuko-single-choice @name="visitFrequency" :@answers="[
             'This is my first time visiting',
             'I have visited SVGO.dev a few times before',
             'I am a regular user',
             ]"></vuko-single-choice>
       </vuko-question>
-      <vuko-question>
-        <h2>How did the cookie banner make you feel?</h2>
+      <vuko-question @question="How did the cookie banner make you feel?">
         <vuko-multiple-choice @name="bannerEmotion" :@answers="[
             'Welcomed',
             'Neutral',
@@ -68,10 +61,7 @@
             'Surprised',
           ]" :@other="true"></vuko-multiple-choice>
       </vuko-question>
-      <vuko-question>
-        <h2>
-          How would you describe your first impression of SVGO's cookie banner?
-        </h2>
+      <vuko-question @question="How would you describe your first impression of SVGO's cookie banner?">
         <vuko-multiple-choice @name="bannerImpression" :@answers="[
             'Professional',
             'Annoying',
@@ -83,8 +73,7 @@
             'Neutral',
           ]" :@other="true"></vuko-multiple-choice>
       </vuko-question>
-      <vuko-question>
-        <h2>How visually appealing did you find the cookie banner?</h2>
+      <vuko-question @question="How visually appealing did you find the cookie banner?">
         <vuko-likert @name="bannerAppeal" :@labels="[
           'Not at all appealing',
           'Slightly appealing',
@@ -94,8 +83,7 @@
         ]">
         </vuko-likert>
       </vuko-question>
-      <vuko-question>
-        <h2>How visually complex did the cookie banner feel to you?</h2>
+      <vuko-question @question="How visually complex did the cookie banner feel to you?">
         <vuko-likert @name="bannerComplexity" :@labels="[
           'Not at all complex',
           'Slightly complex',
@@ -105,8 +93,7 @@
         ]">
         </vuko-likert>
       </vuko-question>
-      <vuko-question>
-        <h2>How easy was it to understand the cookie banner?</h2>
+      <vuko-question @question="How easy was it to understand the cookie banner?">
         <vuko-likert @name="bannerUnderstanding" :@labels="[
           'Very difficult',
           'Somewhat difficult',
@@ -115,9 +102,7 @@
           'Very easy',
         ]"></vuko-likert>
       </vuko-question>
-      <vuko-question>
-        <h2>How did the cookie banner affect your trust in the SVGO.dev website?
-        </h2>
+      <vuko-question @question="How did the cookie banner affect your trust in the SVGO.dev website?">
         <vuko-likert @name="bannerTrustEffect" :@labels="[
           'Significantly decreased my trust',
           'Slightly decreased my trust',
@@ -126,18 +111,14 @@
           'Significantly increased my trust',
         ]"></vuko-likert>
       </vuko-question>
-      <vuko-question>
-        <h2>Do you believe that the cookie banner you saw on the SVGO website 
-        follows privacy regulations?</h2>
+      <vuko-question @question="Do you believe that the cookie banner you saw on the SVGO website follows privacy regulations?">
         <vuko-single-choice @name="bannerCompliance" :@answers="[
             'Yes',
             'No',
             'I am not sure',
             ]"></vuko-single-choice>
       </vuko-question>
-       <vuko-question>
-        <h2>What influenced your choice to accept or reject cookies on the SVGO
-          website?</h2>
+       <vuko-question @question="What influenced your choice to accept or reject cookies on the SVGO website?">
         <vuko-multiple-choice @name="bannerDecisionFactors" :@answers="[
             'Design/appearance of the cookie banner',
             'Trust in the website',
@@ -148,8 +129,7 @@
             'I just wanted the banner to go away',
           ]" :@other="true"></vuko-multiple-choice>
       </vuko-question>
-      <vuko-question>
-        <h2>How integrated did the cookie banner feel with the website?</h2>
+      <vuko-question @question="How integrated did the cookie banner feel with the website?">
         <vuko-likert @name="bannerIntegration" :@labels="[
           'Completely separate from the website',
           'Mostly separate',
@@ -158,8 +138,7 @@
           'Fully integrated with the website',
         ]"></vuko-likert>
       </vuko-question>
-      <vuko-question>
-        <h2>What is your first impression of SVGO.dev?</h2>
+      <vuko-question @question="What is your first impression of SVGO.dev?">
         <vuko-likert @name="websiteImpression" :@labels="[
           'Very negative',
           'Somewhat negative',
@@ -169,8 +148,7 @@
         ]">
         </vuko-likert>
       </vuko-question>
-      <vuko-question>
-        <h2>How trustworthy does the SVGO.dev website feel to you?</h2>
+      <vuko-question @question="How trustworthy does the SVGO.dev website feel to you?">
         <vuko-likert @name="websiteTrust" :@labels="[
           'Not trustworthy at all',
           'Slightly trustworthy',
@@ -179,11 +157,7 @@
           'Extremely trustworthy',
         ]"></vuko-likert>
       </vuko-question>
-      <vuko-question>
-        <h2>
-          Which words would you use to describe the tone of the SVGO.dev 
-          website?
-        </h2>
+      <vuko-question @question="Which words would you use to describe the tone of the SVGO.dev website?">
         <vuko-multiple-choice @name="websiteTone" :@answers="[
             'Professional',
             'Cold',
@@ -197,11 +171,7 @@
             'Unique',
           ]" :@other="true"></vuko-multiple-choice>
       </vuko-question>
-      <vuko-question>
-        <h2>
-          In general, how do you feel when websites show you cookie consent
-          banners/popups?
-        </h2>
+      <vuko-question @question="In general, how do you feel when websites show you cookie consent banners/popups?">
         <vuko-likert @name="generalBannerAttitude" :@labels="[
           'Very negative',
           'Somewhat negative',
@@ -210,11 +180,7 @@
           'Very positive',
         ]"></vuko-likert>
       </vuko-question>
-      <vuko-question>
-        <h2>
-          How much do cookie banners typically affect your first impression of a
-          website?
-        </h2>
+      <vuko-question @question="How much do cookie banners typically affect your first impression of a website?">
         <vuko-likert @name="generalBannerImpact" :@labels="[
           'Not at all',
           'Slightly',
@@ -223,10 +189,7 @@
           'Very much',
         ]"></vuko-likert>
       </vuko-question>
-      <vuko-question>
-        <h2>
-          Do you use any tools that automate responding to cookie banners?
-        </h2>
+      <vuko-question @question="Do you use any tools that automate responding to cookie banners?">
         <vuko-multiple-choice @name="blockingTools" :@answers="[
               'Brave browser (built-in blocking)',
               'uBlock Origin or similar ad blocker',
@@ -235,16 +198,11 @@
               'I don\'t use any such tools'
             ]" :@other="true"></vuko-multiple-choice>
       </vuko-question>
-      <vuko-question>
-        <h2 id="openFeedback-label">Anything else you'd like to share?</h2>
+      <vuko-question @label="openFeedback-label" @question="Anything else you'd like to share?">
         <textarea name="openFeedback" placeholder="Answer text"
           aria-labelledby="openFeedback-label" maxlength="1024"></textarea>
       </vuko-question>
-      <vuko-question>
-        <h2 id="email-label">
-          If you'd like to, leave your email below for a coupon code for a free 
-          sticker pack from my web shop.
-        </h2>
+      <vuko-question @label="email-label" @question="If you'd like to, leave your email below for a coupon code for a free sticker pack from my web shop.">
         <input name="email" placeholder="Email" type="email"
           aria-labelledby="email-label" maxlength="100" />
       </vuko-question>
