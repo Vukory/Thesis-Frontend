@@ -1,4 +1,5 @@
 <section webc:root="override" class="card">
+  <h2 :id="label" @text="question"></h2>
   <slot></slot>
 </section>
 
