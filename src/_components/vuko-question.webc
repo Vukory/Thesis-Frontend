@@ -1,5 +1,5 @@
 <section webc:root="override" class="card">
-  <h2 :id="label" @text="question"></h2>
+  <h3 :id="label" @text="question"></h3>
   <slot></slot>
 </section>
 
@@ -8,7 +8,7 @@
     color: var(--vuko-text-color);
     position: relative;
 
-    h2 {
+    h3 {
       font-size: 1.2rem;
       margin-bottom: 1rem;
     }

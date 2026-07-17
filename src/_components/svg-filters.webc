@@ -1,0 +1,19 @@
+<svg style="position: absolute; width: 0; height: 0; overflow: hidden;" aria-hidden="true">
+  <filter id="thick-outline" x="-20%" y="-20%" width="140%" height="140%">
+    <feMorphology operator="dilate" radius="6" in="SourceAlpha" result="thickened" />
+    
+    <feGaussianBlur stdDeviation="3" in="thickened" result="blurred" />
+    <feColorMatrix type="matrix" values="1 0 0 0 0
+                                         0 1 0 0 0
+                                         0 0 1 0 0
+                                         0 0 0 18 -7" in="blurred" result="smooth-shape" />
+    
+    <feFlood flood-color=var(--vuko-background-color) result="colored" />
+    <feComposite in="colored" in2="smooth-shape" operator="in" result="outline" />
+
+    <feMerge>
+      <feMergeNode in="outline" />
+      <feMergeNode in="SourceGraphic" />
+    </feMerge>
+  </filter>
+</svg>
