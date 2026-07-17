@@ -72,8 +72,10 @@
   }
 
   p {
-    font-family: Scabber, var(--vuko-font);
-    font-weight: 400;
+    font-family: Winky Rough, var(--vuko-font);
+    font-size: 1.1rem;
+    font-weight: 750;
+    letter-spacing: 0.04rem;
   }
 
   @media (min-width: 997px) {
