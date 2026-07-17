@@ -11,8 +11,8 @@
     <p>
       This survey asks about your experience with the
       <a href="https://svgo.dev" target="_blank">SVGO.dev</a> website and the
-      cookie banner you saw. It takes just a few minutes, and all of the questions
-      are optional!
+      cookie banner you saw. It takes just a few minutes, and all questions are
+      optional!
     </p>
     <p>
       As a thank you for your time, you can leave your email at the end for a 
@@ -88,7 +88,10 @@
     }
 
     p {
-      font-family: Scabber, var(--vuko-font);
+      font-family: Winky Rough, var(--vuko-font);
+      font-size: 1.1rem;
+      font-weight: 750;
+      letter-spacing: 0.04rem;
     }
 
     img,
