@@ -25,6 +25,7 @@
     </header>
     <vuko-welcome></vuko-welcome>
     <form :action="`${config.apiBaseUrl}/submit`" method="post">
+      <h2 class="section-heading">About You</h2>
       <vuko-question @question="How old are you?">
         <vuko-single-choice @name="ageBand" :@answers="[
             'Under 25 years old',
@@ -52,6 +53,7 @@
             'I am a regular user',
             ]"></vuko-single-choice>
       </vuko-question>
+      <h2 class="section-heading">The SVGO Cookie Banner</h2>
       <vuko-question @question="How did the cookie banner make you feel?">
         <vuko-multiple-choice @name="bannerEmotion" :@answers="[
             'Welcomed',
@@ -66,16 +68,18 @@
             'Professional',
             'Annoying',
             'Friendly',
+            'Generic',
             'Confusing',
             'Trustworthy',
             'Distracting',
             'Fits the website',
+            'Does not fit the website',
             'Neutral',
           ]" :@other="true"></vuko-multiple-choice>
       </vuko-question>
       <vuko-question @question="How visually appealing did you find the cookie banner?">
         <vuko-likert @name="bannerAppeal" :@labels="[
-          'Not at all appealing',
+          'Not appealing at all',
           'Slightly appealing',
           'Moderately appealing',
           'Very appealing',
@@ -85,7 +89,7 @@
       </vuko-question>
       <vuko-question @question="How visually complex did the cookie banner feel to you?">
         <vuko-likert @name="bannerComplexity" :@labels="[
-          'Not at all complex',
+          'Not complex at all',
           'Slightly complex',
           'Moderately complex',
           'Very complex',
@@ -138,6 +142,7 @@
           'Fully integrated with the website',
         ]"></vuko-likert>
       </vuko-question>
+      <h2 class="section-heading">The SVGO.dev Website</h2>
       <vuko-question @question="What is your first impression of SVGO.dev?">
         <vuko-likert @name="websiteImpression" :@labels="[
           'Very negative',
@@ -171,6 +176,7 @@
             'Unique',
           ]" :@other="true"></vuko-multiple-choice>
       </vuko-question>
+      <h2 class="section-heading">General Questions</h2>
       <vuko-question @question="In general, how do you feel when websites show you cookie consent banners/popups?">
         <vuko-likert @name="generalBannerAttitude" :@labels="[
           'Very negative',
@@ -198,6 +204,7 @@
               'I don\'t use any such tools'
             ]" :@other="true"></vuko-multiple-choice>
       </vuko-question>
+      <h2 class="section-heading">One Last Thing</h2>
       <vuko-question @label="openFeedback-label" @question="Anything else you'd like to share?">
         <textarea name="openFeedback" placeholder="Answer text"
           aria-labelledby="openFeedback-label" maxlength="1024"></textarea>
@@ -213,6 +220,7 @@
     </form>
     <img class="peeper" src="/assets/peeper.png" alt="" />
   </main>
+  <svg-filters></svg-filters>
 </body>
 
 </html>
@@ -281,6 +289,15 @@
     display: flex;
     flex-direction: column;
     gap: 1rem;
+  }
+
+  .section-heading {
+    text-align: center;
+    font-family: "Scabber", var(--vuko-font);
+    color: var(--vuko-text-color);
+    font-size: 2.6em;
+    font-weight: 500;
+    filter: url(#thick-outline) drop-shadow(5px 5px 0.2em var(--vuko-card-shadow));
   }
 </style>
 
