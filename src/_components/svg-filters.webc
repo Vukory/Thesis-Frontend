@@ -8,7 +8,7 @@
                                          0 0 1 0 0
                                          0 0 0 18 -7" in="blurred" result="smooth-shape" />
     
-    <feFlood flood-color=var(--vuko-background-color) result="colored" />
+    <feFlood flood-color="var(--vuko-background-color)" result="colored" />
     <feComposite in="colored" in2="smooth-shape" operator="in" result="outline" />
 
     <feMerge>
