@@ -1,0 +1,3 @@
+[submodule "Thesis-Backend"]
+	path = Thesis-Backend
+	url = https://github.com/Vukory/Thesis-Backend.git
