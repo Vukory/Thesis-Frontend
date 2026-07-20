@@ -49,6 +49,9 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy('./src/robots.txt');
   eleventyConfig.addWatchTarget('./src/**/*.css');
 
+  // Disabling due to quirk with altcha styles spilling out on reload.
+  eleventyConfig.setServerOptions({ domDiff: false });
+
   eleventyConfig.addPassthroughCopy('./src/assets/', {
     /**
      * 
