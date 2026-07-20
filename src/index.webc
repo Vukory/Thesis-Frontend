@@ -27,55 +27,20 @@
     <form id="form" :action="`${config.apiBaseUrl}/submit`" method="post">
       <h2 class="section-heading">About You</h2>
       <vuko-question @question="How old are you?">
-        <vuko-single-choice @name="ageBand" :@answers="[
-            'Under 25 years old',
-            '25-34 years old',
-            '35-44 years old',
-            '45-54 years old',
-            '55-64 years old',
-            '65 years or older',
-            'Prefer not to say',
-          ]"></vuko-single-choice>
+        <vuko-single-choice @name="ageBand" :@answers="$data.survey.ageBand"></vuko-single-choice>
       </vuko-question>
       <vuko-question @question="How would you describe your technical knowledge? (select the option that best describes you)">
-        <vuko-single-choice @name="techExpertise" :@answers="[
-            'I have very little technical knowledge',
-            'I am comfortable using everyday technology',
-            'I have a good understanding of technology',
-            'I have programming or software development experience',
-            'I work professionally in IT or another technical field',
-            ]"></vuko-single-choice>
+        <vuko-single-choice @name="techExpertise" :@answers="$data.survey.techExpertise"></vuko-single-choice>
       </vuko-question>
       <vuko-question @question="How often do you visit SVGO.dev?">
-        <vuko-single-choice @name="visitFrequency" :@answers="[
-            'This is my first time visiting',
-            'I have visited SVGO.dev a few times before',
-            'I am a regular user',
-            ]"></vuko-single-choice>
+        <vuko-single-choice @name="visitFrequency" :@answers="$data.survey.visitFrequency"></vuko-single-choice>
       </vuko-question>
       <h2 class="section-heading">The SVGO Cookie Banner</h2>
       <vuko-question @question="How did the cookie banner make you feel?">
-        <vuko-multiple-choice @name="bannerEmotion" :@answers="[
-            'Welcomed',
-            'Neutral',
-            'Annoyed',
-            'Amused',
-            'Surprised',
-          ]" :@other="true"></vuko-multiple-choice>
+        <vuko-multiple-choice @name="bannerEmotion" :@answers="$data.survey.bannerEmotion" :@other="true"></vuko-multiple-choice>
       </vuko-question>
       <vuko-question @question="How would you describe your first impression of SVGO's cookie banner?">
-        <vuko-multiple-choice @name="bannerImpression" :@answers="[
-            'Professional',
-            'Annoying',
-            'Friendly',
-            'Generic',
-            'Confusing',
-            'Trustworthy',
-            'Distracting',
-            'Fits the website',
-            'Does not fit the website',
-            'Neutral',
-          ]" :@other="true"></vuko-multiple-choice>
+        <vuko-multiple-choice @name="bannerImpression" :@answers="$data.survey.bannerImpression" :@other="true"></vuko-multiple-choice>
       </vuko-question>
       <vuko-question @question="How visually appealing did you find the cookie banner?">
         <vuko-likert @name="bannerAppeal" :@labels="[
@@ -116,22 +81,10 @@
         ]"></vuko-likert>
       </vuko-question>
       <vuko-question @question="Do you believe that the cookie banner you saw on the SVGO website follows privacy regulations?">
-        <vuko-single-choice @name="bannerCompliance" :@answers="[
-            'Yes',
-            'No',
-            'I am not sure',
-            ]"></vuko-single-choice>
+        <vuko-single-choice @name="bannerCompliance" :@answers="$data.survey.bannerCompliance"></vuko-single-choice>
       </vuko-question>
        <vuko-question @question="What influenced your choice to accept or reject cookies on the SVGO website?">
-        <vuko-multiple-choice @name="bannerDecisionFactors" :@answers="[
-            'Design/appearance of the cookie banner',
-            'Trust in the website',
-            'The website\'s brand/visual identity',
-            'Clear explanation of what cookies are used for',
-            'Habit (I usually accept/reject without thought)',
-            'Preservation of privacy',
-            'I just wanted the banner to go away',
-          ]" :@other="true"></vuko-multiple-choice>
+        <vuko-multiple-choice @name="bannerDecisionFactors" :@answers="$data.survey.bannerDecisionFactors" :@other="true"></vuko-multiple-choice>
       </vuko-question>
       <vuko-question @question="How integrated did the cookie banner feel with the website?">
         <vuko-likert @name="bannerIntegration" :@labels="[
@@ -163,18 +116,7 @@
         ]"></vuko-likert>
       </vuko-question>
       <vuko-question @question="Which words would you use to describe the tone of the SVGO.dev website?">
-        <vuko-multiple-choice @name="websiteTone" :@answers="[
-            'Professional',
-            'Cold',
-            'Friendly',
-            'Generic',
-            'Modern',
-            'Corporate',
-            'Playful',
-            'Technical',
-            'Welcoming',
-            'Unique',
-          ]" :@other="true"></vuko-multiple-choice>
+        <vuko-multiple-choice @name="websiteTone" :@answers="$data.survey.websiteTone" :@other="true"></vuko-multiple-choice>
       </vuko-question>
       <h2 class="section-heading">General Questions</h2>
       <vuko-question @question="In general, how do you feel when websites show you cookie consent banners/popups?">
@@ -196,13 +138,7 @@
         ]"></vuko-likert>
       </vuko-question>
       <vuko-question @question="Do you use any tools that automate responding to cookie banners?">
-        <vuko-multiple-choice @name="blockingTools" :@answers="[
-              'Brave browser (built-in blocking)',
-              'uBlock Origin or similar ad blocker',
-              '&quot;I don\'t care about cookies&quot; / &quot;I still don\'t care about cookies&quot; browser extension',
-              'Consent-O-Matic',
-              'I don\'t use any such tools'
-            ]" :@other="true"></vuko-multiple-choice>
+        <vuko-multiple-choice @name="blockingTools" :@answers="$data.survey.blockingTools" :@other="true"></vuko-multiple-choice>
       </vuko-question>
       <h2 class="section-heading">One Last Thing</h2>
       <vuko-question @label="openFeedback-label" @question="Anything else you'd like to share?">

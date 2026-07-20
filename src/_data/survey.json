@@ -1,0 +1,75 @@
+{
+  "ageBand": [
+    "Under 25 years old",
+    "25-34 years old",
+    "35-44 years old",
+    "45-54 years old",
+    "55-64 years old",
+    "65 years or older",
+    "Prefer not to say"
+  ],
+  "techExpertise": [
+    "I have very little technical knowledge",
+    "I am comfortable using everyday technology",
+    "I have a good understanding of technology",
+    "I have programming or software development experience",
+    "I work professionally in IT or another technical field"
+  ],
+  "visitFrequency": [
+    "This is my first time visiting",
+    "I have visited SVGO.dev a few times before",
+    "I am a regular user"
+  ],
+  "bannerCompliance": [
+    "Yes",
+    "No",
+    "I am not sure"
+  ],
+  "bannerEmotion": [
+    "Welcomed",
+    "Neutral",
+    "Annoyed",
+    "Amused",
+    "Surprised"
+  ],
+  "bannerImpression": [
+    "Professional",
+    "Annoying",
+    "Friendly",
+    "Generic",
+    "Confusing",
+    "Trustworthy",
+    "Distracting",
+    "Fits the website",
+    "Does not fit the website",
+    "Neutral"
+  ],
+  "bannerDecisionFactors": [
+    "Design/appearance of the cookie banner",
+    "Trust in the website",
+    "The website's brand/visual identity",
+    "Clear explanation of what cookies are used for",
+    "Habit (I usually accept/reject without thought)",
+    "Preservation of privacy",
+    "I just wanted the banner to go away"
+  ],
+  "websiteTone": [
+    "Professional",
+    "Cold",
+    "Friendly",
+    "Generic",
+    "Modern",
+    "Corporate",
+    "Playful",
+    "Technical",
+    "Welcoming",
+    "Unique"
+  ],
+  "blockingTools": [
+    "Brave browser (built-in blocking)",
+    "uBlock Origin or similar ad blocker",
+    "\"I don't care about cookies\" / \"I still don't care about cookies\" browser extension",
+    "Consent-O-Matic",
+    "I don't use any such tools"
+  ]
+}
