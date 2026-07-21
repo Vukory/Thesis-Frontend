@@ -5,7 +5,7 @@
     <picture>
       <source srcset="/assets/hi-static.gif"
         media="(prefers-reduced-motion: reduce)" />
-      <img src="/assets/hi.gif" alt="Hi again!" />
+      <img src="/assets/hi.gif" alt="Hi again!" width="284" height="70" />
     </picture>
     <p>Thanks so much for taking the time to help with my research!</p>
     <p>
@@ -84,6 +84,7 @@
 
     img {
       width: 100%;
+      height: auto;
       max-width: 208px;
     }
 
