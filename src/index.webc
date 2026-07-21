@@ -6,7 +6,7 @@
   {% include "head.njk" %}
   </template>
   <script :src="getBundleFileUrl('js')" webc:keep defer></script>
-  <link rel="preload" href="/assets/header.png" as="image"
+  <link rel="preload" href="/assets/header.avif" as="image"
     fetchpriority="high" />
   <script webc:keep async src="/lib/altcha.js" type="module"></script>
 </head>
@@ -206,7 +206,8 @@
     height: var(--vuko-header-height);
     width: 100%;
     border-radius: 1rem;
-    background: no-repeat url("/assets/header.png") 43%;
+    background: no-repeat url("/assets/header.avif") 43%;
+    background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
