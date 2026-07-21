@@ -8,6 +8,7 @@ import cssnano from 'cssnano';
 import postcss from 'postcss';
 import postcssPresetEnv from 'postcss-preset-env';
 import { optimize } from 'svgo';
+import { minify } from 'terser';
 import config from './src/_data/config.js';
 
 const postcssProcessor = postcss([
@@ -45,16 +46,39 @@ export default function (eleventyConfig) {
   eleventyConfig.setOutputDirectory('./_site/');
   eleventyConfig.setInputDirectory('./src/');
   eleventyConfig.addPassthroughCopy('./src/CNAME');
-  eleventyConfig.addPassthroughCopy('./src/lib/');
   eleventyConfig.addPassthroughCopy('./src/robots.txt');
   eleventyConfig.addWatchTarget('./src/**/*.css');
 
   // Disabling due to quirk with ALTCHA styles spilling out on reload.
   eleventyConfig.setServerOptions({ domDiff: false });
 
+  eleventyConfig.addPassthroughCopy('./src/lib/', {
+    /**
+     * @param {string} src 
+     * @param {string} _dest 
+     * @param {import('fs').Stats} _stats 
+     * @returns 
+     */
+    transform: (src, _dest, _stats) => {
+      if (path.extname(src) !== '.js') {
+        return;
+      }
+
+      let code = '';
+      return new Transform({
+        transform(chunk, _enc, callback) {
+          code += chunk.toString();
+          callback();
+        },
+        async flush(callback) {
+          callback(null, await minifyJs(code));
+        },
+      });
+    },
+  });
+
   eleventyConfig.addPassthroughCopy('./src/assets/', {
     /**
-     * 
      * @param {string} src 
      * @param {string} _dest 
      * @param {import('fs').Stats} _stats 
@@ -65,13 +89,19 @@ export default function (eleventyConfig) {
         return;
       }
 
+      let code = '';
       return new Transform({
-        transform(chunk, enc, callback) {
-          callback(null, optimize(chunk.toString(), svgoConfig).data);
+        transform(chunk, _enc, callback) {
+          code += chunk.toString();
+          callback();
+        },
+        flush(callback) {
+          callback(null, optimize(code, svgoConfig).data);
         }
       });
     }
   });
+
 
   eleventyConfig.on('eleventy.after', async ({ directories }) => {
     const { input, output } = directories;
@@ -131,6 +161,11 @@ export default function (eleventyConfig) {
       transforms: [
         async function (content) {
           // @ts-expect-error
+          if (this.type === 'js') {
+            return minifyJs(content);
+          }
+
+          // @ts-expect-error
           if (this.type === 'css') {
             const result = await postcssProcessor.process(
               content,
@@ -145,3 +180,13 @@ export default function (eleventyConfig) {
     },
   });
 };
+
+/**
+ * @param {string} body
+ * @returns {Promise<string|undefined>}
+ */
+async function minifyJs(body) {
+  const minified = await minify(body);
+  return minified.code;
+}
+
