@@ -18,7 +18,7 @@
       <picture>
         <source srcset="/assets/amazing-static.gif"
           media="(prefers-reduced-motion: reduce)" />
-        <img src="/assets/amazing.gif" alt="You're amazing!" />
+        <img src="/assets/amazing.gif" alt="You're amazing!" width="533" height="79" />
       </picture>
       <p>
         I really appreciate you taking the time to help me out! Every response
@@ -31,7 +31,7 @@
       <picture>
         <source srcset="/assets/thank-you-static.gif"
           media="(prefers-reduced-motion: reduce)" />
-        <img src="/assets/thank-you.gif" alt="Thank you!" />
+        <img src="/assets/thank-you.gif" alt="Thank you!" width="233" height="39" />
       </picture>
     </div>
   </main>
@@ -62,6 +62,7 @@
 
     img {
       max-width: 100%;
+      height: auto;
     }
   }
 
@@ -78,6 +79,11 @@
     letter-spacing: 0.04rem;
   }
 
+  .peeper {
+    width: 247px;
+    aspect-ratio: 247 / 218;
+  }
+
   @media (min-width: 997px) {
     .thank-you {
       flex-direction: row-reverse;
@@ -90,6 +96,8 @@
     }
 
     .peeper {
+      width: auto;
+      aspect-ratio: 434 / 368;
       position: absolute;
       right: -80px;
       bottom: 0;

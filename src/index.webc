@@ -19,7 +19,7 @@
           <source srcset="/assets/title-static.gif"
             media="(prefers-reduced-motion: reduce)" />
           <img src="/assets/title.gif"
-            alt="User Behavior in Design: A Survey" />
+            alt="User Behavior in Design: A Survey" width="511" height="250" />
         </picture>
       </h1>
     </header>
@@ -216,7 +216,8 @@
     img {
       box-sizing: border-box;
       padding: 2rem;
-      max-width: 100%;
+      width: 100%;
+      height: auto;
       max-height: var(--vuko-header-height);
       filter: drop-shadow(0 6px 4px #3c0c014a);
     }
