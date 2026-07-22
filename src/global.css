@@ -59,6 +59,10 @@ button {
   box-sizing: border-box;
 }
 
+svg[height=0][aria-hidden=true] {
+  position: fixed;
+}
+
 html {
   background-color: var(--vuko-background-color);
   background-image: url('/assets/background.png');
