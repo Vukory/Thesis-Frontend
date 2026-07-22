@@ -16,9 +16,9 @@
     <header>
       <h1>
         <picture>
-          <source srcset="/assets/title-static.gif"
+          <source srcset="/assets/title-static.avif"
             media="(prefers-reduced-motion: reduce)" />
-          <img src="/assets/title.gif"
+          <img src="/assets/title.avif"
             alt="User Behavior in Design: A Survey" width="511" height="250" />
         </picture>
       </h1>
@@ -274,7 +274,7 @@
   });
 
   const controls = form.elements;
-  
+
   for (const control of controls) {
     control.addEventListener('change', () => {
       submit.setCustomValidity('');
