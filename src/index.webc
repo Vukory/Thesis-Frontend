@@ -234,9 +234,19 @@
     text-align: center;
     font-family: "Scabber", var(--vuko-font);
     color: var(--vuko-text-color);
-    font-size: 2.6em;
+    font-size: 2.6rem;
     font-weight: 500;
-    filter: url(#thick-outline) drop-shadow(5px 5px 0.2em var(--vuko-card-shadow));
+    filter: url("#die-cut");
+
+    /**
+     * Workaround for WebKit bug that occurs when an SVG filter effects elements
+     * below the fold.
+     *
+     * See:
+     * - https://bugs.webkit.org/show_bug.cgi?id=314999
+     * - https://commits.webkit.org/315329@main
+     */
+    will-change: transform;
   }
 </style>
 
