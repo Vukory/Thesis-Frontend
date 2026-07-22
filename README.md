@@ -68,3 +68,41 @@ A font is made up of many glyphs, like `a`, `0`, `?`. However, also `°`, `á`, 
 We define ranges of characters to keep, and then _subset_ the glyphs into a smaller font, often saving upwards of 50% of the bytes.
 
 In our case, we reduce Scabber from 19 KB to 10 KB!
+
+## AVIF
+
+As of July 2026, AVIF is officially [Baseline Widely Available](https://web.dev/baseline/). This means AVIF has been supported by all major browsers for at least 30 months, which is the supported browser target we've defined.
+
+We can use AVIF freely without WebP or JPEG fallbacks, which yields much smaller file sizes at acceptable quality and simplifies HTML markup.
+
+Not every image and animation was converted to AVIF—for some smaller assets it only made the filesize larger. Paired with the overhead of decoding AV1, there was no merit to conversion.
+
+### Static Images
+
+To convert non-animated source images to AVIF we use [ImageMagick](https://imagemagick.org).
+
+```sh
+# On Linux, use your package manager. This is the command for Debian:
+sudo apt-get install imagemagick
+
+# On Windows, you can use winget <https://github.com/microsoft/winget-cli>:
+winget install -e --id ImageMagick.ImageMagick
+
+# Once installed, use the magick command:
+magick lossless.png -resize {width}x{height} lossy-for-web.avif
+```
+
+### Animated AVIFs
+
+We need a separate tool as ImageMagick doesn't support writing the full feature matrix of AVIF (animation + alpha).
+
+```sh
+# On Linux, use your package manager. This is the command for Debian:
+sudo apt-get install libavif-bin
+
+# On Windows, you'll have to install it manually from:
+# https://github.com/AOMediaCodec/libavif/releases
+
+# Once installed, use the avifenc command:
+avifenc --speed 0 --fps 7 lossless-animation-*.png lossy-animation-for-web.avif
+```
