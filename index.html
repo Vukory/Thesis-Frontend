@@ -11,7 +11,7 @@
 <meta property="og:image:width" content="760">
 <meta property="og:image:height" content="250">
 
-<link href="/bundle/wwleotUOlz.css" rel="stylesheet">
+<link href="/bundle/SdBTo0xx1p.css" rel="stylesheet">
 <script async src="https://plausible.falco.fun/js/pa-cLPh3hvx5IzB08rR93-zj.js"></script>
 <script>
   window.plausible = window.plausible || function () { (plausible.q = plausible.q || []).push(arguments) }, plausible.init = plausible.init || function (i) { plausible.o = i || {} };
@@ -29,8 +29,8 @@
     <header>
       <h1>
         <picture>
-          <source srcset="/assets/title-static.gif" media="(prefers-reduced-motion: reduce)">
-          <img src="/assets/title.gif" alt="User Behavior in Design: A Survey" width="511" height="250">
+          <source srcset="/assets/title-static.avif" media="(prefers-reduced-motion: reduce)">
+          <img src="/assets/title.avif" alt="User Behavior in Design: A Survey" width="511" height="250">
         </picture>
       </h1>
     </header>
@@ -769,16 +769,16 @@
     </form>
     <img src="/assets/peeper.png" alt class="peeper">
   </main>
-  <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden">
-  <filter id="thick-outline" x="-20%" y="-20%" width="140%" height="140%">
+  <svg width="0" height="0" aria-hidden="true">
+  <filter id="die-cut" color-interpolation-filters="sRGB">
     <feMorphology operator="dilate" radius="6" in="SourceAlpha" result="thickened"></feMorphology>
-    
+
     <feGaussianBlur stdDeviation="3" in="thickened" result="blurred"></feGaussianBlur>
     <feColorMatrix type="matrix" values="1 0 0 0 0
                                          0 1 0 0 0
                                          0 0 1 0 0
                                          0 0 0 18 -7" in="blurred" result="smooth-shape"></feColorMatrix>
-    
+
     <feFlood flood-color="var(--vuko-background-color)" result="colored"></feFlood>
     <feComposite in="colored" in2="smooth-shape" operator="in" result="outline"></feComposite>
 
@@ -786,6 +786,8 @@
       <feMergeNode in="outline"></feMergeNode>
       <feMergeNode in="SourceGraphic"></feMergeNode>
     </feMerge>
+
+    <fedropshadow dx="5" dy="5" stdDeviation="3.2" flood-color="var(--vuko-card-shadow)"></fedropshadow>
   </filter>
 </svg>
 
