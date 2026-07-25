@@ -19,7 +19,7 @@
     gap: 1rem;
 
     .note {
-      font-size: 14px;
+      font-size: .9rem;
       color: var(--vuko-subtext-color);
       font-style: italic;
     }
