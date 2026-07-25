@@ -3,7 +3,7 @@
 <style webc:scoped>
   :host {
     cursor: pointer;
-    font-size: 20px;
+    font-size: 1.25rem;
     background: var(--vuko-button-color);
     border: solid .3rem var(--vuko-accent-color);
     color: var(--vuko-accent-color);

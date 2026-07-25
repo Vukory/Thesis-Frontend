@@ -15,7 +15,7 @@
       optional!
     </p>
     <p>
-      As a thank you for your time, you can leave your email at the end for a 
+      As a thank you for your time, you can leave your email at the end for a
       free sticker pack from my web shop!
     </p>
   </div>
@@ -85,7 +85,7 @@
     img {
       width: 100%;
       height: auto;
-      max-width: 208px;
+      max-width: 13rem;
     }
 
     p {
@@ -101,39 +101,39 @@
     }
   }
 
-  @container (width > 672px) {
+  @container (width > 46rem) {
     :host.card {
-      height: 360px;
+      height: 21rem;
 
       .outline1 {
         shape-outside: polygon(0 0,
-            166px 0,
-            168px 10%,
-            123px 20%,
-            143px 30%,
-            142px 40%,
-            109px 50%,
-            113px 60%,
-            124px 70%,
-            126px 80%,
-            156px 90%,
-            162px 100%,
+            10rem 0,
+            11rem 10%,
+            8rem 20%,
+            9rem 30%,
+            9rem 40%,
+            7rem 50%,
+            7rem 60%,
+            8rem 70%,
+            8rem 80%,
+            10rem 90%,
+            10rem 100%,
             0 100%);
       }
 
       .outline2 {
         shape-outside: polygon(100% 0,
-            calc(100% - 166px) 0,
-            calc(100% - 168px) 10%,
-            calc(100% - 123px) 20%,
-            calc(100% - 143px) 30%,
-            calc(100% - 142px) 40%,
-            calc(100% - 109px) 50%,
-            calc(100% - 113px) 60%,
-            calc(100% - 124px) 70%,
-            calc(100% - 126px) 80%,
-            calc(100% - 156px) 90%,
-            calc(100% - 162px) 100%,
+            calc(100% - 10rem) 0,
+            calc(100% - 11rem) 10%,
+            calc(100% - 8rem) 20%,
+            calc(100% - 9rem) 30%,
+            calc(100% - 9rem) 40%,
+            calc(100% - 7rem) 50%,
+            calc(100% - 7rem) 60%,
+            calc(100% - 8rem) 70%,
+            calc(100% - 8rem) 80%,
+            calc(100% - 10rem) 90%,
+            calc(100% - 10rem) 100%,
             100% 100%);
       }
 
@@ -146,7 +146,7 @@
     }
 
     .welcome {
-      padding: 48px;
+      padding: 3rem;
     }
   }
 </style>

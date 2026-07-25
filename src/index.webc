@@ -170,7 +170,7 @@
 
   main {
     width: 100%;
-    max-width: 760px;
+    max-width: 48rem;
     margin: 1rem;
     display: flex;
     flex-direction: column;
@@ -193,11 +193,9 @@
     position: absolute;
     bottom: 0;
     right: 0;
-    width: 60%;
-    max-width: 396px;
-    max-height: 522px;
+    max-height: var(--vuko-peeper-height);
 
-    @media (min-width: 1600px) {
+    @media (min-width: 100rem) {
       position: fixed;
     }
   }

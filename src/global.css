@@ -19,8 +19,8 @@
   --vuko-subtext-color: #763c2e;
   --vuko-text-color: #5e1a09;
   --vuko-card-shadow: #70560040;
-  --vuko-peeper-height: 522px;
-  --vuko-header-height: 250px;
+  --vuko-peeper-height: 32rem;
+  --vuko-header-height: 16rem;
   --vuko-font: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
 }
 
@@ -79,7 +79,7 @@ a {
 }
 
 textarea {
-  min-height: 128px;
+  min-height: 8rem;
   resize: none;
 }
 
@@ -106,5 +106,5 @@ textarea {
   background: var(--vuko-card-color);
   border-radius: 20px;
   box-shadow: 0 4px 15px var(--vuko-card-shadow);
-  padding: 48px;
+  padding: 3rem;
 }
