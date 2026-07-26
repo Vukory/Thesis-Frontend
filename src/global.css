@@ -59,7 +59,7 @@ button {
   box-sizing: border-box;
 }
 
-svg[height=0][aria-hidden=true] {
+svg[height="0"][aria-hidden="true"] {
   position: fixed;
 }
 
