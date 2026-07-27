@@ -29,6 +29,7 @@
 
     .outline1,
     .outline2 {
+      --ratio: calc(100cqw / 1.8);
       width: 50%;
       height: 100%;
       shape-margin: 1rem;
@@ -38,27 +39,27 @@
     .outline1 {
       float: left;
       shape-outside: polygon(0 100%,
-          0% calc(100% - 100cqw / 1.8 * .85),
-          10% calc(100% - 100cqw / 1.8 * .86),
-          20% calc(100% - 100cqw / 1.8 * .9),
-          30% calc(100% - 100cqw / 1.8 * .8),
-          40% calc(100% - 100cqw / 1.8 * .7),
-          50% calc(100% - 100cqw / 1.8 * .55),
-          60% calc(100% - 100cqw / 1.8 * .5),
-          100% calc(100% - 100cqw / 1.8 * .35));
+          0% calc(100% - var(--ratio) * .85),
+          10% calc(100% - var(--ratio) * .86),
+          20% calc(100% - var(--ratio) * .9),
+          30% calc(100% - var(--ratio) * .8),
+          40% calc(100% - var(--ratio) * .7),
+          50% calc(100% - var(--ratio) * .55),
+          60% calc(100% - var(--ratio) * .5),
+          100% calc(100% - var(--ratio) * .35));
     }
 
     .outline2 {
       float: right;
       shape-outside: polygon(100% 100%,
-          100% calc(100% - 100cqw / 1.8 * .85),
-          90% calc(100% - 100cqw / 1.8 * .86),
-          80% calc(100% - 100cqw / 1.8 * .9),
-          70% calc(100% - 100cqw / 1.8 * .8),
-          60% calc(100% - 100cqw / 1.8 * .7),
-          50% calc(100% - 100cqw / 1.8 * .55),
-          40% calc(100% - 100cqw / 1.8 * .5),
-          0 calc(100% - 100cqw / 1.8 * .35));
+          100% calc(100% - var(--ratio) * .85),
+          90% calc(100% - var(--ratio) * .86),
+          80% calc(100% - var(--ratio) * .9),
+          70% calc(100% - var(--ratio) * .8),
+          60% calc(100% - var(--ratio) * .7),
+          50% calc(100% - var(--ratio) * .55),
+          40% calc(100% - var(--ratio) * .5),
+          0 calc(100% - var(--ratio) * .35));
     }
 
     &::before {
