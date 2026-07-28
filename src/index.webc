@@ -193,6 +193,7 @@
     position: absolute;
     bottom: 0;
     right: 0;
+    max-width: 60%;
     max-height: var(--vuko-peeper-height);
 
     @media (min-width: 100rem) {
