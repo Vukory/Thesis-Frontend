@@ -12,6 +12,7 @@
 </head>
 
 <body>
+  <template webc:nokeep @raw="spritesheet()"></template>
   <main>
     <header>
       <h1>
@@ -36,6 +37,7 @@
         <vuko-single-choice @name="visitFrequency" :@answers="$data.survey.visitFrequency"></vuko-single-choice>
       </vuko-question>
       <h2 class="section-heading">The SVGO Cookie Banner</h2>
+      <vuko-cookie-banner-preview></vuko-cookie-banner-preview>
       <vuko-question @question="How did the cookie banner make you feel?">
         <vuko-multiple-choice @name="bannerEmotion" :@answers="$data.survey.bannerEmotion" :@other="true"></vuko-multiple-choice>
       </vuko-question>
@@ -232,7 +234,6 @@
   .section-heading {
     text-align: center;
     font-family: "Scabber", var(--vuko-font);
-    color: var(--vuko-text-color);
     font-size: 2.6rem;
     font-weight: 500;
     filter: url("#die-cut");

@@ -5,7 +5,6 @@
 
 <style webc:scoped>
   :host.card {
-    color: var(--vuko-text-color);
     position: relative;
 
     h3 {
