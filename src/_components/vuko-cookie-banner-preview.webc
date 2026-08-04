@@ -1,0 +1,175 @@
+<div webc:root class="card">
+  <div class="top">
+    <p>A preview of the cookie banner shown during your visit:</p>
+    <div class="theme-icons">
+      <button class="sun" type="button" aria-label="Preview cookie consent banner in light mode">
+        <svg-sprite @icon="sun"></svg-sprite>
+      </button>
+      <button class="moon" type="button" aria-label="Preview cookie consent banner in dark mode">
+        <svg-sprite @icon="moon"></svg-sprite>
+      </button>
+    </div>
+  </div>
+</div>
+
+<style webc:scoped>
+  :host.card {
+    display: none;
+    padding: 1rem;
+    flex-direction: column;
+
+    .top {
+      padding: 2rem 2rem 0 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .theme-icons {
+      display: none;
+      align-items: center;
+      gap: .5rem;
+    }
+
+    button {
+      color: var(--vuko-text-color);
+      background: none;
+      cursor: pointer;
+      border: none;
+      opacity: .3;
+    }
+
+    button.active {
+      opacity: 1;
+    }
+
+    svg {
+      aspect-ratio: 1;
+    }
+
+    button.sun svg { height: 1.875rem; }
+    button.moon svg { height: 1.5625rem; }
+
+    picture {
+      align-self: center;
+    }
+
+    img {
+      max-height: 512px;
+      max-width: 100%;
+    }
+  }
+</style>
+
+<script>
+  const COOKIE_BANNERS = {
+    a: {
+      light: {
+        regular: '/assets/cookie-consent-preview-a-light.avif',
+        widescreen: '/assets/cookie-consent-preview-a-wide-light.avif',
+      },
+      dark: {
+        regular: '/assets/cookie-consent-preview-a-dark.avif',
+        widescreen: '/assets/cookie-consent-preview-a-wide-dark.avif',
+      },
+      alt: 'Cookie Preferences. We use an optional first-party cookie to collect anonymous usage and performance metrics. Plausible Analytics remains enabled for cookie-free analytics. You can read more about it in our Privacy Policy.',
+      themeAware: true
+    },
+    b: {
+      regular: '/assets/cookie-consent-preview-b.avif',
+      widescreen: '/assets/cookie-consent-preview-b-wide.avif',
+      alt: 'Want some cookies? We\'d like to use one small cookie to see how people use this site. Just anonymous stats, nothing more! Plausible Analytics keeps running either way, no cookie needed. Curious? Learn more in our Privacy Policy.',
+      themeAware: false
+    },
+    c: {
+      regular: '/assets/cookie-consent-preview-c.avif',
+      widescreen: '/assets/cookie-consent-preview-c-wide.avif',
+      alt: 'Cookie Preferences. We use Plausible Analytics to analyze site traffic. If you agree, cookies are also used to deliver and enhance the quality of our content. You can read more about it on our Privacy Policy.',
+      themeAware: false
+    }
+  };
+
+  class CookieBannerPreview extends HTMLElement {
+    #variantData;
+    /** @type {HTMLButtonElement=} */
+    #lightBtn;
+    /** @type {HTMLButtonElement=} */
+    #darkBtn;
+    /** @type {boolean=} */
+    #isDarkTheme;
+    /** @type {HTMLPictureElement=} */
+    #picture;
+
+    connectedCallback() {
+      const { search } = window.location;
+      const urlSearchParams = new URLSearchParams(search);
+      const variant = urlSearchParams.get('utm_content');
+
+      if (!['a', 'b', 'c'].includes(variant)) {
+        return;
+      }
+
+      this.#variantData = COOKIE_BANNERS[variant];
+
+      const themeIcons = this.querySelector('.theme-icons');
+
+      if (this.#variantData.themeAware) {
+        themeIcons.style.display = 'flex';
+      }
+
+      this.#lightBtn = themeIcons.querySelector('.sun');
+      this.#darkBtn = themeIcons.querySelector('.moon');
+      this.#isDarkTheme = window?.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+      const activeBtn = this.#isDarkTheme ? this.#darkBtn : this.#lightBtn;
+      activeBtn.classList.add('active');
+
+      this.#lightBtn.addEventListener('click', () => {
+        if (this.#isDarkTheme) {
+          this.#darkBtn.classList.remove('active');
+          this.#lightBtn.classList.add('active');
+          this.#isDarkTheme = false;
+          this.updatePreview();
+        }
+      });
+
+      this.#darkBtn.addEventListener('click', () => {
+        if (!this.#isDarkTheme) {
+          this.#lightBtn.classList.remove('active');
+          this.#darkBtn.classList.add('active');
+          this.#isDarkTheme = true;
+          this.updatePreview();
+        }
+      })
+
+      this.updatePreview();
+      this.style.display = 'flex';
+    }
+
+    updatePreview() {
+      if (this.#picture) {
+        this.#picture.remove();
+      }
+
+      const theme = this.#isDarkTheme ? 'dark' : 'light';
+      const { regular, widescreen } = this.#variantData.themeAware ? this.#variantData[theme] : this.#variantData;
+
+      const source = document.createElement('source');
+      source.srcset = widescreen;
+      source.media = '(min-width: 577px)';
+
+      const img = document.createElement('img');
+      img.src = regular;
+      img.alt = this.#variantData.alt;
+
+      const picture = document.createElement('picture');
+      picture.appendChild(source);
+      picture.appendChild(img);
+
+      this.appendChild(picture);
+      this.#picture = picture;
+    }
+  }
+
+  customElements.define('vuko-cookie-banner-preview', CookieBannerPreview);
+</script>
