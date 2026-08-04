@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 14">
+  <!--!
+    Adapted from "trash_can.svg" <https://www.voxy.space/projects/at-icons>, used under the MIT license which is included below:
+    
+    MIT License
+
+    Copyright (c) 2026–present Valentin Fossati (Voxybuns) and contributors
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    SOFTWARE.
+  -->
+  <path fill="currentColor" d="m1 5 .902 8.11a1 1 0 0 0 .994.89h6.208c.51 0 .94-.384.996-.89L11 5Zm5 .785c.353 0 .637.284.637.637v6.394a.635.635 0 0 1-.637.637.635.635 0 0 1-.637-.637V6.422c0-.353.284-.637.637-.637m-3.076.04c.323-.004.6.237.637.566l.707 6.355a.637.637 0 0 1-1.268.14l-.705-6.355a.635.635 0 0 1 .629-.707m6.152 0q.034 0 .067.003c.35.04.601.353.562.703L9 12.887a.637.637 0 0 1-1.268-.14L8.44 6.39a.634.634 0 0 1 .637-.567M4 0a1 1 0 0 0-1 1v1H1a1 1 0 0 0-1 1v1h12V3a1 1 0 0 0-1-1H9V1a1 1 0 0 0-1-1H6Zm.348 1h3.304C7.85.996 8 1.11 8 1.293V2H4v-.707c0-.184.151-.297.348-.293"/>
+</svg>

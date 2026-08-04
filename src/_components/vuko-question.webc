@@ -1,6 +1,10 @@
-<section webc:root="override" class="card">
+<section webc:root class="card">
   <h3 :id="label" @text="question"></h3>
   <slot></slot>
+  <button type="button" class="clear">
+    <span>Clear answer</span>
+    <svg-sprite @icon="trash_can"></svg-sprite>
+  </button>
 </section>
 
 <style webc:scoped>
@@ -15,6 +19,30 @@
     input[type="radio"],
     input[type="checkbox"] {
       transform: scale(1.6);
+    }
+
+    .clear {
+      position: absolute;
+      display: none;
+      align-items: center;
+      bottom: 0;
+      right: 0;
+      gap: .5rem;
+      cursor: pointer;
+      background: var(--vuko-card-color);
+      border: none;
+      color: var(--vuko-accent-color);
+      border-radius: var(--vuko-card-border-radius) 0;
+      padding: .8rem;
+
+      svg {
+        height: 1rem;
+        aspect-ratio: 1;
+      }
+    }
+
+    .clear:focus, .clear:hover {
+      background: hsl(from var(--vuko-card-color) h s calc(l - 4));
     }
   }
 
@@ -35,3 +63,44 @@
     pointer-events: none;
   }
 </style>
+
+
+<script>
+  class VukoQuestion extends HTMLElement {
+    /** @type {HTMLButtonElement=} */
+    #clearButton;
+    /** @type {NodeListOf<HTMLInputElement|HTMLTextAreaElement>=} */
+    #formFields;
+
+    connectedCallback() {
+      this.#clearButton = this.querySelector('.clear');
+      this.#formFields = this.querySelectorAll('input, textarea');
+
+      this.#clearButton.addEventListener('click', (event) => {
+        this.#formFields.forEach(elem => {
+          if (elem.nodeName === 'TEXTAREA') {
+            elem.value = '';
+            return;
+          }
+
+          switch (elem.type) {
+            case 'radio':
+            case 'checkbox':
+              elem.checked = false;
+              break;
+            case 'text':
+            case 'email':
+              elem.value = '';
+              break;
+            default:
+              // Do nothing!
+          }
+        });
+      });
+
+      this.#clearButton.style.display = 'flex';
+    }
+  }
+
+  customElements.define('vuko-question', VukoQuestion);
+</script>
