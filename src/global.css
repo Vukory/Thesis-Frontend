@@ -11,15 +11,15 @@
 }
 
 :root {
-  --vuko-accent-color: #580700;
-  --vuko-background-color: #fff7da;
-  --vuko-button-color: #fff5d5;
-  --vuko-card-color: #fff;
-  --vuko-link-color: #0057a8;
-  --vuko-subtext-color: #763c2e;
-  --vuko-text-color: #5e1a09;
+  --vuko-accent-color: hsl(5 100% 17%);
+  --vuko-background-color: hsl(47 100% 93%);
+  --vuko-button-color: hsl(46 100% 92%);
+  --vuko-card-color: hsl(0 0% 100%);
+  --vuko-link-color: hsl(209 100% 33%);
+  --vuko-subtext-color: hsl(12 44% 32%);
+  --vuko-text-color: hsl(12 83% 20%);
   --vuko-card-border-radius: 20px;
-  --vuko-card-shadow: #70560040;
+  --vuko-card-shadow: hsl(46 100% 22% / 0.251);
   --vuko-peeper-height: 32rem;
   --vuko-header-height: 16rem;
   --vuko-font: ui-rounded, 'Hiragino Maru Gothic ProN', Quicksand, Comfortaa, Manjari,
@@ -97,7 +97,7 @@ input[type=text],
 input[type=email],
 textarea {
   width: 100%;
-  border-color: rgb(from var(--vuko-text-color) r g b / .6);
+  border-color: hsl(from var(--vuko-text-color) h s l / .6);
   border-width: 0 0 1px 0;
 }
 
