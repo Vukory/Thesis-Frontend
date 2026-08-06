@@ -5,6 +5,10 @@
     <span>Clear answer</span>
     <svg-sprite @icon="trash_can"></svg-sprite>
   </button>
+  <button type="button" class="undo">
+    <span>Undo</span>
+    <svg-sprite @icon="arrow_counterclockwise"></svg-sprite>
+  </button>
 </section>
 
 <style webc:scoped>
@@ -21,7 +25,7 @@
       transform: scale(1.6);
     }
 
-    .clear {
+    button {
       position: absolute;
       display: none;
       align-items: center;
@@ -34,15 +38,21 @@
       color: var(--vuko-accent-color);
       border-radius: var(--vuko-card-border-radius) 0;
       padding: .8rem;
+      width: 10rem;
+      justify-content: center;
 
       svg {
         height: 1rem;
         aspect-ratio: 1;
       }
-    }
 
-    .clear:focus, .clear:hover {
-      background: hsl(from var(--vuko-card-color) h s calc(l - 4));
+      &:focus, &:hover {
+        background: hsl(from var(--vuko-card-color) h s calc(l - 4));
+      }
+
+      &.active {
+        display: flex;
+      }
     }
   }
 
@@ -67,39 +77,120 @@
 
 <script>
   class VukoQuestion extends HTMLElement {
+    /** @type {NodeListOf<HTMLInputElement|HTMLElement>=} */
+    #formFields;
     /** @type {HTMLButtonElement=} */
     #clearButton;
-    /** @type {NodeListOf<HTMLInputElement|HTMLTextAreaElement>=} */
-    #formFields;
+    /** @type {HTMLButtonElement=} */
+    #undoButton;
+    /** @type {Map<string, unknown>=} */
+    #previousAnswers;
 
     connectedCallback() {
-      this.#clearButton = this.querySelector('.clear');
       this.#formFields = this.querySelectorAll('input, textarea');
+      this.#clearButton = this.querySelector('.clear');
+      this.#undoButton = this.querySelector('.undo');
+      this.#clearButton.addEventListener('click', this.#onClearButtonClick);
+      this.#undoButton.addEventListener('click', this.#onUndoButtonClick);
 
-      this.#clearButton.addEventListener('click', (event) => {
-        this.#formFields.forEach(elem => {
-          if (elem.nodeName === 'TEXTAREA') {
-            elem.value = '';
-            return;
-          }
+      for (const field of this.#formFields) {
+        field.addEventListener('change', this.#onFormInput);
+        field.addEventListener('input', this.#onFormInput);
+      }
 
-          switch (elem.type) {
-            case 'radio':
-            case 'checkbox':
-              elem.checked = false;
-              break;
-            case 'text':
-            case 'email':
-              elem.value = '';
-              break;
-            default:
-              // Do nothing!
-          }
-        });
-      });
-
-      this.#clearButton.style.display = 'flex';
+      this.#clearButton.classList.add('active');
     }
+
+    disconnectedCallback() {
+      this.#clearButton.removeEventListener('click', this.#onClearButtonClick);
+      this.#undoButton.removeEventListener('click', this.#onUndoButtonClick);
+
+      for (const field of this.#formFields) {
+        field.removeEventListener('change', this.#onFormInput);
+        field.removeEventListener('input', this.#onFormInput);
+      }
+    }
+
+    #onClearButtonClick = () => {
+      const answers = new Map();
+
+      for (const field of this.#formFields) {
+        if (field.nodeName === 'TEXTAREA' && field.value) {
+          answers.set(field, field.value);
+          field.value = '';
+          continue;
+        }
+
+        switch (field.type) {
+          case 'radio':
+          case 'checkbox':
+            if (field.checked) {
+              answers.set(field, field.checked);
+              field.checked = false;
+            }
+            break;
+          case 'text':
+          case 'email':
+            if (field.value) {
+              answers.set(field, field.value);
+              field.value = '';
+            }
+            break;
+          default:
+            // Do nothing!
+        }
+      }
+
+      if (answers.size === 0) {
+        return;
+      }
+
+      this.#previousAnswers = answers;
+      this.#clearButton.classList.remove('active');
+      this.#undoButton.classList.add('active');
+      this.#undoButton.focus();
+    };
+
+    #onUndoButtonClick = () => {
+      for (const field of this.#formFields) {
+        if (!this.#previousAnswers.has(field)) {
+          continue;
+        }
+
+        const answer = this.#previousAnswers.get(field);
+
+        if (field.nodeName === 'TEXTAREA') {
+          field.value = answer;
+          continue;
+        }
+
+        switch (field.type) {
+          case 'radio':
+          case 'checkbox':
+            field.checked = answer;
+            break;
+          case 'text':
+          case 'email':
+            field.value = answer;
+            break;
+          default:
+            // Do nothing!
+        }
+      }
+
+      this.#previousAnswers = null;
+      this.#undoButton.classList.remove('active');
+      this.#clearButton.classList.add('active');
+      this.#clearButton.focus();
+    };
+
+    #onFormInput = () => {
+      if (this.#previousAnswers) {
+        this.#previousAnswers = null;
+        this.#undoButton.classList.remove('active');
+        this.#clearButton.classList.add('active');
+      }
+    };
   }
 
   customElements.define('vuko-question', VukoQuestion);
