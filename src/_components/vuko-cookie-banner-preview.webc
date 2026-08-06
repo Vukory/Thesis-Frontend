@@ -124,29 +124,19 @@
       const activeBtn = this.#isDarkTheme ? this.#darkBtn : this.#lightBtn;
       activeBtn.classList.add('active');
 
-      this.#lightBtn.addEventListener('click', () => {
-        if (this.#isDarkTheme) {
-          this.#darkBtn.classList.remove('active');
-          this.#lightBtn.classList.add('active');
-          this.#isDarkTheme = false;
-          this.updatePreview();
-        }
-      });
+      this.#lightBtn.addEventListener('click', this.#onLightButtonClick);
+      this.#darkBtn.addEventListener('click', this.#onDarkButtonClick);
 
-      this.#darkBtn.addEventListener('click', () => {
-        if (!this.#isDarkTheme) {
-          this.#lightBtn.classList.remove('active');
-          this.#darkBtn.classList.add('active');
-          this.#isDarkTheme = true;
-          this.updatePreview();
-        }
-      })
-
-      this.updatePreview();
+      this.#updatePreview();
       this.style.display = 'flex';
     }
 
-    updatePreview() {
+    disconnectedCallback() {
+      this.#lightBtn?.removeEventListener('click', this.#onLightButtonClick);
+      this.#darkBtn?.removeEventListener('click', this.#onDarkButtonClick);
+    }
+
+    #updatePreview() {
       if (this.#picture) {
         this.#picture.remove();
       }
@@ -169,6 +159,24 @@
       this.appendChild(picture);
       this.#picture = picture;
     }
+
+    #onLightButtonClick = () => {
+      if (this.#isDarkTheme) {
+        this.#darkBtn.classList.remove('active');
+        this.#lightBtn.classList.add('active');
+        this.#isDarkTheme = false;
+        this.#updatePreview();
+      }
+    };
+
+    #onDarkButtonClick = () => {
+      if (!this.#isDarkTheme) {
+        this.#lightBtn.classList.remove('active');
+        this.#darkBtn.classList.add('active');
+        this.#isDarkTheme = true;
+        this.#updatePreview();
+      }
+    };
   }
 
   customElements.define('vuko-cookie-banner-preview', CookieBannerPreview);

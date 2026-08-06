@@ -8,7 +8,7 @@
     <input :id="`${name}-other`" class="other-checkbox" type="checkbox" :name="name" value="other" />
     <label :id="`${name}-other-label`" :for="`${name}-other`">Other</label>:
     <input class="other-text" :aria-labelledby="`${name}-other-label`" type="text"
-      :name="`${name}-other`" maxLength="100" />
+      :name="`${name}-other`" maxLength="100" placeholder="Answer text"/>
   </span>
 </div>
 
@@ -53,17 +53,24 @@
       }
 
       this.#otherText = this.querySelector('.other-text');
-
-      this.#otherCheckbox.addEventListener('click', () => {
-        if (this.#otherCheckbox.checked) {
-          this.#otherText.focus();
-        }
-      });
-
-      this.#otherText.addEventListener('input', () => {
-        this.#otherCheckbox.checked = true;
-      });
+      this.#otherCheckbox.addEventListener('click', this.#onCheckboxClick);
+      this.#otherText.addEventListener('input', this.#onTextInput);
     }
+
+    disconnectedCallback() {
+      this.#otherCheckbox?.removeEventListener('click', this.#onCheckboxClick);
+      this.#otherText?.removeEventListener('input', this.#onTextInput);
+    }
+
+    #onCheckboxClick = () => {
+      if (this.#otherCheckbox.checked) {
+        this.#otherText.focus();
+      }
+    };
+
+    #onTextInput = () => {
+      this.#otherCheckbox.checked = true;
+    };
   }
 
   customElements.define('vuko-multiple-choice', MultipleChoice);
