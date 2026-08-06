@@ -1,6 +1,6 @@
 /**
  * @typedef {'production'|'development'} Environment
- * 
+ *
  * @typedef {object} Config
  * @property {string} baseUrl
  * @property {string} apiBaseUrl
