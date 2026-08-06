@@ -75,10 +75,10 @@ export default async function (eleventyConfig) {
 
   eleventyConfig.addPassthroughCopy('./src/lib/', {
     /**
-     * @param {string} src 
-     * @param {string} _dest 
-     * @param {import('fs').Stats} _stats 
-     * @returns 
+     * @param {string} src
+     * @param {string} _dest
+     * @param {import('fs').Stats} _stats
+     * @returns
      */
     transform: (src, _dest, _stats) => {
       if (path.extname(src) !== '.js') {
@@ -100,10 +100,10 @@ export default async function (eleventyConfig) {
 
   eleventyConfig.addPassthroughCopy('./src/assets/', {
     /**
-     * @param {string} src 
-     * @param {string} _dest 
-     * @param {import('fs').Stats} _stats 
-     * @returns 
+     * @param {string} src
+     * @param {string} _dest
+     * @param {import('fs').Stats} _stats
+     * @returns
      */
     transform: (src, _dest, _stats) => {
       if (path.extname(src) !== '.svg') {
@@ -206,7 +206,7 @@ export default async function (eleventyConfig) {
 };
 
 /**
- * @param {string} input 
+ * @param {string} input
  * @return {Promise<string>}
  */
 async function generateSpritesheet(input) {

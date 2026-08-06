@@ -2,7 +2,27 @@ root = true
 
 [*]
 charset = utf-8
-indent_style = space
-indent_size = 2
 end_of_line = lf
+indent_size = 2
+indent_style = space
 insert_final_newline = true
+trim_trailing_whitespace = true
+curly_bracket_next_line = false
+spaces_around_operators = true
+
+[.gitmodules]
+indent_style = tab
+
+[*.{js,ts}]
+quote_type = single
+
+[*.{md,markdown}]
+trim_trailing_whitespace = false
+
+[/src/lib/**]
+charset = unset
+end_of_line = unset
+indent_size = unset
+indent_style = unset
+insert_final_newline = unset
+trim_trailing_whitespace = unset

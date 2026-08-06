@@ -85,7 +85,7 @@
       <vuko-question @question="Do you believe that the cookie banner you saw on the SVGO website follows privacy regulations?">
         <vuko-single-choice @name="bannerCompliance" :@answers="$data.survey.bannerCompliance"></vuko-single-choice>
       </vuko-question>
-       <vuko-question @question="What influenced your choice to accept or reject cookies on the SVGO website?">
+      <vuko-question @question="What influenced your choice to accept or reject cookies on the SVGO website?">
         <vuko-multiple-choice @name="bannerDecisionFactors" :@answers="$data.survey.bannerDecisionFactors" :@other="true"></vuko-multiple-choice>
       </vuko-question>
       <vuko-question @question="How integrated did the cookie banner feel with the website?">
