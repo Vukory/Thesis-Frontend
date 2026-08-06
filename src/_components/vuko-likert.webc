@@ -20,7 +20,7 @@
       grid-template-columns: repeat(5, 1fr);
 
       span {
-        flex-grow: 1;
+        align-items: center;
         display: flex;
         flex-direction: column;
         text-align: center;
