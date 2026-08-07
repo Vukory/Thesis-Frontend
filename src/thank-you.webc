@@ -1,43 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
+---
+layout: layouts/main.webc
+---
 
-<head>
-  <template webc:type="11ty" 11ty:type="njk">
-  {% include "head.njk" %}
-  </template>
-</head>
+<template webc:type="11ty" 11ty:type="njk">
+{% html "meta" %}
+<title>Thank You | User Behavior in Design</title>
+{% endhtml %}
+</template>
 
-<body>
-  <main class="thank-you card">
+<main class="thank-you card">
+  <picture>
+    <source srcset="/assets/thank-you-peeper-wide.png"
+      media="(min-width: 997px)" />
+    <img class="peeper" src="/assets/thank-you-peeper.png" alt="" />
+  </picture>
+  <div class="copy">
     <picture>
-      <source srcset="/assets/thank-you-peeper-wide.png"
-        media="(min-width: 997px)" />
-      <img class="peeper" src="/assets/thank-you-peeper.png" alt="" />
+      <source srcset="/assets/amazing-static.gif"
+        media="(prefers-reduced-motion: reduce)" />
+      <img src="/assets/amazing.gif" alt="You're amazing!" width="533" height="79" />
     </picture>
-    <div class="copy">
-      <picture>
-        <source srcset="/assets/amazing-static.gif"
-          media="(prefers-reduced-motion: reduce)" />
-        <img src="/assets/amazing.gif" alt="You're amazing!" width="533" height="79" />
-      </picture>
-      <p>
-        I really appreciate you taking the time to help me out! Every response
-        brings me one step closer to finishing my thesis!
-      </p>
-      <p>
-        Left your email? Your free sticker code will be on its way towards the
-        end of my research, which should be towards the end of 2027!
-      </p>
-      <picture>
-        <source srcset="/assets/thank-you-static.gif"
-          media="(prefers-reduced-motion: reduce)" />
-        <img src="/assets/thank-you.gif" alt="Thank you!" width="233" height="39" />
-      </picture>
-    </div>
-  </main>
-</body>
-
-</html>
+    <p>
+      I really appreciate you taking the time to help me out! Every response
+      brings me one step closer to finishing my thesis!
+    </p>
+    <p>
+      Left your email? Your free sticker code will be on its way towards the
+      end of my research, which should be towards the end of 2027!
+    </p>
+    <picture>
+      <source srcset="/assets/thank-you-static.gif"
+        media="(prefers-reduced-motion: reduce)" />
+      <img src="/assets/thank-you.gif" alt="Thank you!" width="233" height="39" />
+    </picture>
+  </div>
+</main>
 
 <style>
   body {

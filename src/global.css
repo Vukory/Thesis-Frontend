@@ -1,3 +1,5 @@
+@layer global;
+
 @font-face {
   font-family: "Scabber";
   src: url("/fonts/Scabber.woff2") format("woff2");
@@ -10,104 +12,106 @@
   font-display: swap;
 }
 
-:root {
-  --vuko-accent-color: hsl(5 100% 17%);
-  --vuko-background-color: hsl(47 100% 93%);
-  --vuko-button-color: hsl(46 100% 92%);
-  --vuko-card-color: hsl(0 0% 100%);
-  --vuko-link-color: hsl(209 100% 33%);
-  --vuko-subtext-color: hsl(12 44% 32%);
-  --vuko-text-color: hsl(12 83% 20%);
-  --vuko-card-border-radius: 20px;
-  --vuko-card-shadow: hsl(46 100% 22% / 0.251);
-  --vuko-peeper-height: 32rem;
-  --vuko-header-height: 16rem;
-  --vuko-font: ui-rounded, 'Hiragino Maru Gothic ProN', Quicksand, Comfortaa, Manjari,
-    'Arial Rounded MT', 'Arial Rounded MT Bold', Calibri, source-sans-pro, sans-serif;
-  color: var(--vuko-text-color);
-}
+@layer global {
+  :root {
+    --vuko-accent-color: hsl(5 100% 17%);
+    --vuko-background-color: hsl(47 100% 93%);
+    --vuko-button-color: hsl(46 100% 92%);
+    --vuko-card-color: hsl(0 0% 100%);
+    --vuko-link-color: hsl(209 100% 33%);
+    --vuko-subtext-color: hsl(12 44% 32%);
+    --vuko-text-color: hsl(12 83% 20%);
+    --vuko-card-border-radius: 20px;
+    --vuko-card-shadow: hsl(46 100% 22% / 0.251);
+    --vuko-peeper-height: 32rem;
+    --vuko-header-height: 16rem;
+    --vuko-font: ui-rounded, 'Hiragino Maru Gothic ProN', Quicksand, Comfortaa, Manjari,
+      'Arial Rounded MT', 'Arial Rounded MT Bold', Calibri, source-sans-pro, sans-serif;
+    color: var(--vuko-text-color);
+  }
 
-html,
-body,
-main,
-div,
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 0;
-  padding: 0;
-}
+  html,
+  body,
+  main,
+  div,
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0;
+    padding: 0;
+  }
 
-main,
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-input,
-textarea,
-button {
-  font-family: "Winky Rough", var(--vuko-font);
-}
+  main,
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  input,
+  textarea,
+  button {
+    font-family: "Winky Rough", var(--vuko-font);
+  }
 
-*,
-*::after,
-*::before {
-  box-sizing: border-box;
-}
+  *,
+  *::after,
+  *::before {
+    box-sizing: border-box;
+  }
 
-svg[height="0"][aria-hidden="true"] {
-  position: fixed;
-}
+  svg[height="0"][aria-hidden="true"] {
+    position: fixed;
+  }
 
-html {
-  background-color: var(--vuko-background-color);
-  background-image: url('/assets/background.png');
-  height: 100%;
-}
+  html {
+    background-color: var(--vuko-background-color);
+    background-image: url('/assets/background.png');
+    height: 100%;
+  }
 
-body {
-  min-height: 100%;
-}
+  body {
+    min-height: 100%;
+  }
 
-a {
-  color: var(--vuko-link-color);
-  text-decoration: none;
-}
+  a {
+    color: var(--vuko-link-color);
+    text-decoration: none;
+  }
 
-textarea {
-  min-height: 8rem;
-  resize: none;
-}
+  textarea {
+    min-height: 8rem;
+    resize: none;
+  }
 
-input,
-textarea {
-  font-size: 1rem;
-  background: none;
-  color: var(--vuko-text-color);
-}
+  input,
+  textarea {
+    font-size: 1rem;
+    background: none;
+    color: var(--vuko-text-color);
+  }
 
-input[type=text],
-input[type=email],
-textarea {
-  width: 100%;
-  border-color: hsl(from var(--vuko-text-color) h s l / .6);
-  border-width: 0 0 1px 0;
-}
+  input[type=text],
+  input[type=email],
+  textarea {
+    width: 100%;
+    border-color: hsl(from var(--vuko-text-color) h s l / .6);
+    border-width: 0 0 1px 0;
+  }
 
-.welcome {
-  line-height: 1.2rem;
-}
+  .welcome {
+    line-height: 1.2rem;
+  }
 
-.card {
-  background: var(--vuko-card-color);
-  border-radius: var(--vuko-card-border-radius);
-  box-shadow: 0 4px 15px var(--vuko-card-shadow);
-  padding: 3rem;
+  .card {
+    background: var(--vuko-card-color);
+    border-radius: var(--vuko-card-border-radius);
+    box-shadow: 0 4px 15px var(--vuko-card-shadow);
+    padding: 3rem;
+  }
 }
