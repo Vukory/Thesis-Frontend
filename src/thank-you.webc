@@ -41,7 +41,7 @@ layout: layouts/main.webc
 <style>
   main {
     width: 100%;
-    overflow-x: hidden;
+    overflow-x: clip;
     display: flex;
     justify-content: center;
     align-items: center;
