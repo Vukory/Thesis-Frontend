@@ -1,11 +1,11 @@
 <section webc:root class="card">
   <h3 :id="label" @text="question"></h3>
   <slot></slot>
-  <button type="button" class="clear">
+  <button type="button" class="clear" disabled>
     <span>Clear answer</span>
     <svg-sprite @icon="trash_can"></svg-sprite>
   </button>
-  <button type="button" class="undo">
+  <button type="button" class="undo" disabled>
     <span>Undo</span>
     <svg-sprite @icon="arrow_counterclockwise"></svg-sprite>
   </button>
@@ -27,7 +27,8 @@
 
     button {
       position: absolute;
-      display: none;
+      display: flex;
+      opacity: 1;
       align-items: center;
       bottom: 0;
       right: 0;
@@ -40,18 +41,24 @@
       padding: .8rem;
       width: 10rem;
       justify-content: center;
+      transition: background .2s, opacity .2s;
 
       svg {
         height: 1rem;
         aspect-ratio: 1;
       }
 
+      &:disabled {
+        opacity: 0;
+        pointer-events: none;
+      }
+
       &:focus, &:hover {
         background: hsl(from var(--vuko-card-color) h s calc(l - 4));
       }
 
-      &.active {
-        display: flex;
+      &:active {
+        background: hsl(from var(--vuko-card-color) h s calc(l - 8));
       }
     }
   }
@@ -97,8 +104,6 @@
         field.addEventListener('change', this.#onFormInput);
         field.addEventListener('input', this.#onFormInput);
       }
-
-      this.#clearButton.classList.add('active');
     }
 
     disconnectedCallback() {
@@ -112,11 +117,14 @@
     }
 
     #onClearButtonClick = () => {
-      const answers = new Map();
+      const answers = this.#getAnswers();
 
-      for (const field of this.#formFields) {
-        if (field.nodeName === 'TEXTAREA' && field.value) {
-          answers.set(field, field.value);
+      if (answers.size === 0) {
+        return;
+      }
+
+      for (const [field, answer] of answers.entries()) {
+        if (field.nodeName === 'TEXTAREA') {
           field.value = '';
           continue;
         }
@@ -124,30 +132,20 @@
         switch (field.type) {
           case 'radio':
           case 'checkbox':
-            if (field.checked) {
-              answers.set(field, field.checked);
-              field.checked = false;
-            }
+            field.checked = false;
             break;
           case 'text':
           case 'email':
-            if (field.value) {
-              answers.set(field, field.value);
-              field.value = '';
-            }
+            field.value = '';
             break;
           default:
             // Do nothing!
         }
       }
 
-      if (answers.size === 0) {
-        return;
-      }
-
       this.#previousAnswers = answers;
-      this.#clearButton.classList.remove('active');
-      this.#undoButton.classList.add('active');
+      this.#clearButton.disabled = true;
+      this.#undoButton.disabled = false;
       this.#undoButton.focus();
     };
 
@@ -179,18 +177,61 @@
       }
 
       this.#previousAnswers = null;
-      this.#undoButton.classList.remove('active');
-      this.#clearButton.classList.add('active');
+      this.#undoButton.disabled = true;
+      this.#clearButton.disabled = false;
       this.#clearButton.focus();
     };
 
     #onFormInput = () => {
       if (this.#previousAnswers) {
         this.#previousAnswers = null;
-        this.#undoButton.classList.remove('active');
-        this.#clearButton.classList.add('active');
+        this.#undoButton.disabled = true;
+        this.#clearButton.disabled = false;
+        return;
       }
+
+      const answers = this.#getAnswers();
+
+      if (answers.size === 0) {
+        this.#clearButton.disabled = true;
+        return;
+      }
+
+      this.#clearButton.disabled = false;
     };
+
+    /**
+     * @returns {Map<string, unknown>}
+     */
+    #getAnswers() {
+      const answers = new Map();
+
+      for (const field of this.#formFields) {
+        if (field.nodeName === 'TEXTAREA' && field.value) {
+          answers.set(field, field.value);
+          continue;
+        }
+
+        switch (field.type) {
+          case 'radio':
+          case 'checkbox':
+            if (field.checked) {
+              answers.set(field, field.checked);
+            }
+            break;
+          case 'text':
+          case 'email':
+            if (field.value) {
+              answers.set(field, field.value);
+            }
+            break;
+          default:
+            // Do nothing!
+        }
+      }
+
+      return answers;
+    }
   }
 
   customElements.define('vuko-question', VukoQuestion);
