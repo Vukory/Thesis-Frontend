@@ -154,7 +154,7 @@ bundleScripts: true
     </vuko-question>
     <section>
       <vuko-altcha-widget :@config="config"></vuko-altcha-widget>
-      <vuko-submit id="submit"></vuko-submit>
+      <vuko-button id="submit" type="submit" @as="button">Submit</vuko-button>
     </section>
   </form>
 </main>
