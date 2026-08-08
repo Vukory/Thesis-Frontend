@@ -21,12 +21,15 @@
     --vuko-link-color: hsl(209 100% 33%);
     --vuko-subtext-color: hsl(12 44% 32%);
     --vuko-text-color: hsl(12 83% 20%);
+    --vuko-footer-color: hsl(65 39% 50%);
     --vuko-card-border-radius: 20px;
     --vuko-card-shadow: hsl(46 100% 22% / 0.251);
-    --vuko-peeper-height: 32rem;
     --vuko-header-height: 16rem;
+    --vuko-content-width: 48rem;
+    --vuko-content-margin: 1rem;
     --vuko-font: ui-rounded, "Hiragino Maru Gothic ProN", Quicksand, Comfortaa, Manjari,
       "Arial Rounded MT", "Arial Rounded MT Bold", Calibri, source-sans-pro, sans-serif;
+    --vuko-emoji: "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", "Twemoji Mozilla";
     color: var(--vuko-text-color);
   }
 

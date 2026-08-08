@@ -157,46 +157,33 @@ bundleScripts: true
       <vuko-submit id="submit"></vuko-submit>
     </section>
   </form>
-  <img class="peeper" src="/assets/peeper.png" alt="" />
 </main>
 
 <style>
-  body {
-    display: flex;
-    justify-content: center;
-    position: relative;
-  }
-
   main {
-    width: 100%;
-    max-width: 48rem;
-    margin: 1rem;
+    margin: var(--vuko-content-margin) 0;
+    width: calc(100% - var(--vuko-content-margin) * 2);
+    max-width: var(--vuko-content-width);
     display: flex;
     flex-direction: column;
     gap: 1rem;
     container-type: inline-size;
 
-    &::after {
+    &::before {
+      display: none;
       content: "";
-      width: 60%;
-      max-width: 396px;
-      aspect-ratio: 0.75862069;
-
-      @media (min-width: 1600px) {
-        display: none;
-      }
-    }
-  }
-
-  .peeper {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    max-width: 60%;
-    max-height: var(--vuko-peeper-height);
-
-    @media (min-width: 100rem) {
+      z-index: 1;
+      background: url("/assets/peeper.png") bottom right / 24rem no-repeat;
       position: fixed;
+      bottom: 0;
+      right: 0;
+      height: 100%;
+      width: 100%;
+      pointer-events: none;
+
+      @media (min-width: 100rem) {
+        display: block;
+      }
     }
   }
 

@@ -1,0 +1,154 @@
+---
+layout: layouts/main.webc
+---
+
+<template webc:type="11ty" 11ty:type="njk">
+{% html "meta" %}
+<title>Privacy Policy | User Behavior in Design</title>
+{% endhtml %}
+</template>
+
+<main class="card">
+  <h1>Privacy Policy</h1>
+  <h2>Who is behind this?</h2>
+  <p>
+    This site and the research are run by me – <a href="https://vukory.art/" target="_blank">Vukory</a>,
+    a master&apos;s student at <a href="https://unze.ba/" target="_blank">University of Zenica</a>
+    <span class="emojis">🇧🇦</span>.
+  </p>
+  <h2>Analytics</h2>
+  <p>
+    This site uses Plausible for analytics. Plausible is a privacy-friendly,
+    Open Source tool that uses no cookies. It&apos;s self-hosted by an SVGO
+    maintainer, and <a href="https://plausible.falco.fun/survey.vukory.art" target="_blank">the dashboard</a>
+    is fully public, so you can see exactly what I see. No secrets :3
+  </p>
+  <p>
+    Plausible only picks up general information like which pages were visited,
+    how long people stayed, and rough device info (device type, OS, country,
+    browser). Nothing that points back to you. Also, if you use an ad blocker
+    like uBlock Origin, it&apos;ll block Plausible by default.
+  </p>
+  <h2>Taking the survey?</h2>
+  <p>
+    When you submit your response, your answers travel securely (HTTPS) to a
+    server I control. Along with your answers, the server also logs your IP
+    address and browser details. I use this information to catch duplicate or
+    spam submissions, and they get deleted together with any emails once the
+    research wraps up.
+  </p>
+  <p>
+    Your answers only ever appear in an aggregated form, fully anonymized in
+    my thesis, never tied back to you.
+  </p>
+  <h2>Your email</h2>
+  <p>
+    Leaving your email is completely optional! It does exactly one job: allowing
+    me to send you your single-use code for a free sticker pack. Once that code&apos;s
+    been sent, your email has done its job and I will delete it, as there&apos;s no
+    reason to hang onto it.
+  </p>
+  <h2>How long do I keep data?</h2>
+  <ul>
+    <li>
+      <span class="li-key">Emails and IP addresses</span> - deleted when the research ends
+      (expected Q4 2027), or upon request
+    </li>
+    <li>
+      <span class="li-key">Your answers</span> - kept anonymized as part of the thesis
+    </li>
+  </ul>
+  <p>
+    Any questions? Feel free to reach out to me at <a href="mailto:hi@vukory.art" target="_blank">hi@vukory.art</a>! 💌
+  </p>
+  <h2>Who helps to run this?</h2>
+  <p>
+    A few services keep all of this working behind the scenes:
+  </p>
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Third Party</th>
+          <th>What they do</th>
+          <th>Where</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="https://github.com/" target="_blank">GitHub</a></td>
+          <td>Delivers this website to your browser with GitHub Pages</td>
+          <td>United States <span class="emojis">🇺🇸</span></td>
+        </tr>
+        <tr>
+          <td>Falco&apos;s Tea Party</td>
+          <td>Self-Hosts <a href="https://plausible.falco.fun/survey.vukory.art" target="_blank">Plausible</a></td>
+          <td>United Kingdom <span class="emojis">🇬🇧</span></td>
+        </tr>
+        <tr>
+          <td><a href="https://contabo.com/" target="_blank">Contabo</a></td>
+          <td>Hosts the server that stores survey responses</td>
+          <td>United Kingdom <span class="emojis">🇬🇧</span></td>
+        </tr>
+        <tr>
+          <td><a href="https://mailbox.org/" target="_blank">mailbox</a></td>
+          <td>Hosts my inbox (your sticker code will get delivered from here)</td>
+          <td>Germany <span class="emojis">🇩🇪</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</main>
+
+<style>
+  main {
+    width: calc(100% - var(--vuko-content-margin) * 2);
+    margin: var(--vuko-content-margin) 0;
+    max-width: var(--vuko-content-width);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  main.card {
+    position: relative;
+  }
+
+  main.card::after {
+    content: "";
+    position: absolute;
+    inset: -8px;
+    background-image:
+      url(/assets/flower-2.svg),
+      url(/assets/flower-1.svg);
+    background-repeat: no-repeat;
+    background-size: 6rem, 4rem;
+    background-position:
+      top right,
+      bottom left;
+    pointer-events: none;
+  }
+
+  span.li-key {
+    font-weight: bold;
+  }
+
+  .table-container {
+    overflow-x: auto;
+  }
+
+  table {
+    text-align: left;
+    border-spacing: 0;
+    min-width: 100%;
+  }
+
+  th, td {
+    border-bottom: 1px solid var(--vuko-subtext-color);
+    padding: 0.4rem;
+  }
+
+  .emojis {
+    font-family: var(--vuko-emoji);
+  }
+</style>

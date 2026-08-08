@@ -25,6 +25,21 @@
 
 <body>
   <template webc:nokeep @raw="content"></template>
+  <vuko-footer></vuko-footer>
 </body>
 
 </html>
+
+<style>
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    gap: 1rem;
+  }
+
+  main {
+    flex-grow: 1;
+  }
+</style>
