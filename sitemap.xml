@@ -8,6 +8,13 @@
   </url>
   
   
+  <url>
+    <loc>https://survey.vukory.art/privacy-policy/</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.0</priority>
+  </url>
+  
+  
   
   <url>
     <loc>https://survey.vukory.art/thank-you/</loc>
