@@ -11,7 +11,7 @@
     "lint": "eslint .",
     "format": "eslint --fix .",
     "typecheck": "tsc",
-    "a11y": "pa11y-ci --sitemap http://localhost:8080/sitemap.xml",
+    "a11y": "pa11y-ci --sitemap 'http://localhost:8080/sitemap.xml' --sitemap-find 'https://survey.vukory.art' --sitemap-replace 'http://localhost:8080'",
     "a11y:ci": "start-server-and-test 'serve _site -l 8080' 'http://localhost:8080' 'yarn run a11y'",
     "qa": "yarn run lint && yarn run typecheck && yarn run a11y"
   },
