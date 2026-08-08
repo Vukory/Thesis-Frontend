@@ -11,7 +11,7 @@
   <meta property="og:image:type" content="image/jpeg" />
   <meta property="og:image:width" content="760" />
   <meta property="og:image:height" content="250" />
-  <meta name="fediverse:creator" content="@Vukory@mastodon.social">
+  <meta name="fediverse:creator" content="@Vukory@mastodon.social" />
   <link rel="stylesheet" href="../../global.css" />
   <link webc:keep :href="getBundleFileUrl('css')" rel="stylesheet">
   <script webc:keep async
