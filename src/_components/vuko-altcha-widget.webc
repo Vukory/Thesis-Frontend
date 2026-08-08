@@ -61,8 +61,8 @@
     font-size: 10px;
     font-family: var(--vuko-font);
 
-    &:hover {
-      color: hsl(from var(--altcha-color-text) h s calc(l + 5));
+    &:hover, &:focus-within {
+      opacity: 1;
     }
   }
 </style>
