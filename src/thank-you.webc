@@ -8,45 +8,48 @@ layout: layouts/main.webc
 {% endhtml %}
 </template>
 
-<main class="thank-you card">
-  <picture>
-    <source srcset="/assets/thank-you-peeper-wide.png"
-      media="(min-width: 997px)" />
-    <img class="peeper" src="/assets/thank-you-peeper.png" alt="" />
-  </picture>
-  <div class="copy">
+<main>
+  <div class="thank-you card">
     <picture>
-      <source srcset="/assets/amazing-static.gif"
-        media="(prefers-reduced-motion: reduce)" />
-      <img src="/assets/amazing.gif" alt="You're amazing!" width="533" height="79" />
+      <source srcset="/assets/thank-you-peeper-wide.png"
+        media="(min-width: 997px)" />
+      <img class="peeper" src="/assets/thank-you-peeper.png" alt="" />
     </picture>
-    <p>
-      I really appreciate you taking the time to help me out! Every response
-      brings me one step closer to finishing my thesis!
-    </p>
-    <p>
-      Left your email? Your free sticker code will be on its way towards the
-      end of my research, which should be towards the end of 2027!
-    </p>
-    <picture>
-      <source srcset="/assets/thank-you-static.gif"
-        media="(prefers-reduced-motion: reduce)" />
-      <img src="/assets/thank-you.gif" alt="Thank you!" width="233" height="39" />
-    </picture>
+    <div class="copy">
+      <picture>
+        <source srcset="/assets/amazing-static.gif"
+          media="(prefers-reduced-motion: reduce)" />
+        <img src="/assets/amazing.gif" alt="You're amazing!" width="533" height="79" />
+      </picture>
+      <p>
+        I really appreciate you taking the time to help me out! Every response
+        brings me one step closer to finishing my thesis!
+      </p>
+      <p>
+        Left your email? Your free sticker code will be on its way towards the
+        end of my research, which should be towards the end of 2027!
+      </p>
+      <picture>
+        <source srcset="/assets/thank-you-static.gif"
+          media="(prefers-reduced-motion: reduce)" />
+        <img src="/assets/thank-you.gif" alt="Thank you!" width="233" height="39" />
+      </picture>
+    </div>
   </div>
 </main>
 
 <style>
-  body {
+  main {
+    width: 100%;
+    overflow-x: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    overflow-x: hidden;
   }
 
   .thank-you {
-    font-size: 18px;
+    font-size: 1.125rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
