@@ -25,14 +25,14 @@
   }
 
   :host::before {
-    background: no-repeat url(/assets/flower-1.svg);
+    background: no-repeat url("/assets/flower-1.svg");
     background-size: 3.2rem;
     background-position: bottom .1rem left .6rem;
     transform: rotate(180deg);
   }
 
   :host::after {
-    background: no-repeat url(/assets/flower-3.svg);
+    background: no-repeat url("/assets/flower-3.svg");
     background-size: 3rem;
     background-position: bottom .2rem left .6rem;
   }
