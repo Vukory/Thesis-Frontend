@@ -15,14 +15,14 @@ layout: layouts/main.webc
     <p>
       This site and the research are run by me — <a href="https://vukory.art/" target="_blank">Vukory</a>,
       a master&apos;s student at <a href="https://unze.ba/" target="_blank">University of Zenica</a>
-      <span class="emojis">🇧🇦</span>.
+      <span class="emojis" role="img" aria-label="Bosnia and Herzegovina">🇧🇦</span>.
     </p>
     <h2>Analytics</h2>
     <p>
       This site uses Plausible for analytics. Plausible is a privacy-friendly,
       Open Source tool that uses no cookies. It&apos;s self-hosted by an SVGO
       maintainer, and <a href="https://plausible.falco.fun/survey.vukory.art" target="_blank">the dashboard</a>
-      is fully public, so you can see exactly what I see. No secrets :3
+      is fully public, so you can see exactly what I see. No secrets <span role="img" aria-label="uwu">:3</span>
     </p>
     <p>
       Plausible only picks up general information like which pages were visited,
@@ -60,7 +60,7 @@ layout: layouts/main.webc
       </li>
     </ul>
     <p>
-      Any questions? Feel free to reach out to me at <a href="mailto:hi@vukory.art" target="_blank">hi@vukory.art</a>! 💌
+      Any questions? Feel free to reach out to me at <a href="mailto:hi@vukory.art" target="_blank">hi@vukory.art</a>! <span class="emojis" aria-hidden="true">💌</span>
     </p>
     <h2>Who helps to run this?</h2>
     <p>
@@ -79,22 +79,22 @@ layout: layouts/main.webc
           <tr>
             <td><a href="https://github.com/" target="_blank">GitHub</a></td>
             <td>Delivers this website to your browser with GitHub Pages</td>
-            <td>United States <span class="emojis">🇺🇸</span></td>
+            <td>United States <span class="emojis" aria-hidden="true">🇺🇸</span></td>
           </tr>
           <tr>
             <td>Falco&apos;s Tea Party</td>
             <td>Self-Hosts <a href="https://plausible.falco.fun/survey.vukory.art" target="_blank">Plausible</a></td>
-            <td>United Kingdom <span class="emojis">🇬🇧</span></td>
+            <td>United Kingdom <span class="emojis" aria-hidden="true">🇬🇧</span></td>
           </tr>
           <tr>
             <td><a href="https://contabo.com/" target="_blank">Contabo</a></td>
             <td>Hosts the server that stores survey responses</td>
-            <td>United Kingdom <span class="emojis">🇬🇧</span></td>
+            <td>United Kingdom <span class="emojis" aria-hidden="true">🇬🇧</span></td>
           </tr>
           <tr>
             <td><a href="https://mailbox.org/" target="_blank">mailbox</a></td>
             <td>Hosts my inbox (your sticker code will get delivered from here)</td>
-            <td>Germany <span class="emojis">🇩🇪</span></td>
+            <td>Germany <span class="emojis" aria-hidden="true">🇩🇪</span></td>
           </tr>
         </tbody>
       </table>
