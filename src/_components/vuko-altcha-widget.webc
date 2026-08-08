@@ -24,9 +24,9 @@
   }
 
   .altcha::before {
-    content: '';
+    content: "";
     position: absolute;
-    background: no-repeat url(/assets/captcha-robot.png);
+    background: no-repeat url("/assets/captcha-robot.png");
     background-size: contain;
     background-position: bottom left;
     height: 100%;
@@ -50,7 +50,7 @@
 
   .altcha[data-state=verified] {
     &::before {
-      background-image: url(/assets/captcha-human.png);
+      background-image: url("/assets/captcha-human.png");
     }
   }
 

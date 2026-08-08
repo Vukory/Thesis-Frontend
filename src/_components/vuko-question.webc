@@ -63,8 +63,8 @@
     width: calc(100% + 16px);
     inset: -8px;
     background-image:
-      url(/assets/flower-2.svg),
-      url(/assets/flower-1.svg);
+      url("/assets/flower-2.svg"),
+      url("/assets/flower-1.svg");
     background-repeat: no-repeat;
     background-size: 6rem, 4rem;
     background-position:
