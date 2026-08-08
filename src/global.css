@@ -25,8 +25,8 @@
     --vuko-card-shadow: hsl(46 100% 22% / 0.251);
     --vuko-peeper-height: 32rem;
     --vuko-header-height: 16rem;
-    --vuko-font: ui-rounded, 'Hiragino Maru Gothic ProN', Quicksand, Comfortaa, Manjari,
-      'Arial Rounded MT', 'Arial Rounded MT Bold', Calibri, source-sans-pro, sans-serif;
+    --vuko-font: ui-rounded, "Hiragino Maru Gothic ProN", Quicksand, Comfortaa, Manjari,
+      "Arial Rounded MT", "Arial Rounded MT Bold", Calibri, source-sans-pro, sans-serif;
     color: var(--vuko-text-color);
   }
 
@@ -71,7 +71,7 @@
 
   html {
     background-color: var(--vuko-background-color);
-    background-image: url('/assets/background.png');
+    background-image: url("/assets/background.png");
     height: 100%;
   }
 
