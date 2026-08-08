@@ -60,6 +60,13 @@ layout: layouts/main.webc
     margin: 1rem;
     gap: 1.5rem;
 
+    p {
+      font-family: "Winky Rough", var(--vuko-font);
+      font-size: 1.1rem;
+      font-weight: 750;
+      letter-spacing: 0.04rem;
+    }
+
     img {
       max-width: 100%;
       height: auto;
@@ -70,13 +77,6 @@ layout: layouts/main.webc
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-  }
-
-  p {
-    font-family: "Winky Rough", var(--vuko-font);
-    font-size: 1.1rem;
-    font-weight: 750;
-    letter-spacing: 0.04rem;
   }
 
   .peeper {
