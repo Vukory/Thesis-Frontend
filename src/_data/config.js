@@ -19,13 +19,13 @@ function getConfig() {
         baseUrl: 'https://survey.vukory.art',
         apiBaseUrl: 'https://api.vukory.art',
         env: NODE_ENV,
-      }
+      };
     case 'development':
       return {
         baseUrl: 'http://localhost:8080',
         apiBaseUrl: 'http://localhost:8081',
         env: NODE_ENV,
-      }
+      };
     default:
       throw Error('NODE_ENV must be one of: "production", "development"');
   }

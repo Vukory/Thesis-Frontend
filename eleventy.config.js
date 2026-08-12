@@ -3,6 +3,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { Transform } from 'node:stream';
 import { promisify, styleText } from 'node:util';
+// @ts-expect-error No type definitions.
 import pluginWebc from '@11ty/eleventy-plugin-webc';
 import cssnano from 'cssnano';
 import postcss from 'postcss';
@@ -63,6 +64,7 @@ const svgoConfigSprite = {
 
 let pyftsubsetWarning = false;
 
+// @ts-expect-error No type definitions.
 export default async function (eleventyConfig) {
   eleventyConfig.setOutputDirectory('./_site/');
   eleventyConfig.setInputDirectory('./src/');
@@ -124,6 +126,7 @@ export default async function (eleventyConfig) {
   });
 
 
+  // @ts-expect-error No type definitions.
   eleventyConfig.on('eleventy.after', async ({ directories }) => {
     const { input, output } = directories;
 
@@ -180,6 +183,10 @@ export default async function (eleventyConfig) {
     components: 'src/_components/**/*.webc',
     bundlePluginOptions: {
       transforms: [
+        /**
+         * @param {string} content
+         * @returns {Promise<string|undefined>}
+         */
         async function (content) {
           // @ts-expect-error
           if (this.type === 'js') {
@@ -230,7 +237,7 @@ async function generateSpritesheet(input) {
 
   for (const f of files) {
     const sprite = path.join(spritesDir, f);
-    spriter.add(sprite, null, await fs.readFile(sprite, 'utf-8'))
+    spriter.add(sprite, null, await fs.readFile(sprite, 'utf-8'));
   }
 
   const { result } = await spriter.compileAsync();

@@ -14,6 +14,7 @@ export default [
       '_site',
       'node_modules/**',
       'src/lib/**',
+      'Thesis-Backend',
     ],
   },
   {
@@ -31,6 +32,7 @@ export default [
   {
     files: ['**/*.js', '**/*.mjs'],
     rules: {
+      semi: ['error', 'always'],
       curly: 'error',
       quotes: ['error', 'single'],
       'no-unused-vars': ['error', {
