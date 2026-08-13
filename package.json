@@ -1,5 +1,4 @@
 {
-  "packageManager": "yarn@4.12.0",
   "name": "vukory-survey",
   "version": "1.0.0",
   "description": "Survey for cookie banner study conducted on SVGO.dev.",
@@ -22,6 +21,11 @@
     "runtime": {
       "name": "node",
       "version": "^24.11.0"
+    },
+    "packageManager": {
+      "name": "yarn",
+      "version": "4.12.0",
+      "onFail": "error"
     }
   },
   "devDependencies": {
