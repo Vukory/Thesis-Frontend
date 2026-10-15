@@ -1,3 +1,0 @@
-<svg webc:root="override">
-  <use :href="`#${icon}`">
-</svg>

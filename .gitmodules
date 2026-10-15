@@ -1,6 +1,0 @@
-[submodule "Thesis-Backend"]
-	path = Thesis-Backend
-	url = https://github.com/Vukory/Thesis-Backend.git
-	branch = main
-	ignore = dirty
-	shallow = true

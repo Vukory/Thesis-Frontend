@@ -8,7 +8,6 @@ import pluginWebc from '@11ty/eleventy-plugin-webc';
 import cssnano from 'cssnano';
 import postcss from 'postcss';
 import postcssPresetEnv from 'postcss-preset-env';
-import SVGSpriter from 'svg-sprite';
 import { optimize } from 'svgo';
 import { minify } from 'terser';
 import config from './src/_data/config.js';
@@ -42,26 +41,6 @@ const svgoConfig = {
   ]
 };
 
-/** @type {import('svgo').Config} */
-const svgoConfigSprite = {
-  plugins: [
-    {
-      name: 'preset-default',
-      params: {
-        overrides: {
-          mergePaths: {
-            noSpaceAfterFlags: true
-          },
-          removeHiddenElems: false,
-          cleanupIds: false
-        }
-      },
-    },
-    'cleanupListOfValues',
-    'removeXMLNS',
-  ]
-};
-
 let pyftsubsetWarning = false;
 
 // @ts-expect-error No type definitions.
@@ -71,9 +50,6 @@ export default async function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy('./src/CNAME');
   eleventyConfig.addPassthroughCopy('./src/robots.txt');
   eleventyConfig.addWatchTarget('./src/**/*.css');
-
-  // Disabling due to quirk with ALTCHA styles spilling out on reload.
-  eleventyConfig.setServerOptions({ domDiff: false });
 
   eleventyConfig.addPassthroughCopy('./src/lib/', {
     /**
@@ -207,41 +183,6 @@ export default async function (eleventyConfig) {
       ],
     },
   });
-
-  const spritesheet = await generateSpritesheet('./src/');
-  eleventyConfig.addShortcode('spritesheet', () => spritesheet);
-};
-
-/**
- * @param {string} input
- * @return {Promise<string>}
- */
-async function generateSpritesheet(input) {
-  const spriter = new SVGSpriter({
-    svg: {
-      xmlDeclaration: false,
-      transform: [(svg) => optimize(svg, svgoConfigSprite).data],
-      rootAttributes: {
-        width: '0',
-        height: '0',
-        'aria-hidden': 'true'
-      }
-    },
-    mode: {
-      symbol: true
-    }
-  });
-
-  const spritesDir = path.join(input, 'sprites');
-  const files = await fs.readdir(spritesDir);
-
-  for (const f of files) {
-    const sprite = path.join(spritesDir, f);
-    spriter.add(sprite, null, await fs.readFile(sprite, 'utf-8'));
-  }
-
-  const { result } = await spriter.compileAsync();
-  return result.symbol.sprite.contents;
 }
 
 /**

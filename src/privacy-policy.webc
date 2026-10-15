@@ -17,39 +17,18 @@ layout: layouts/main.webc
       a master&apos;s student at <a href="https://unze.ba/" target="_blank">University of Zenica</a>
       <span class="emojis" role="img" aria-label="Bosnia and Herzegovina">🇧🇦</span>.
     </p>
-    <h2>Analytics</h2>
+    <h2><del>Analytics</del></h2>
     <p>
-      This site uses Plausible for analytics. Plausible is a privacy-friendly,
-      Open Source tool that uses no cookies. It&apos;s self-hosted by an SVGO
-      maintainer, and <a href="https://plausible.falco.fun/survey.vukory.art" target="_blank">the dashboard</a>
-      is fully public, so you can see exactly what I see. No secrets <span role="img" aria-label="uwu">:3</span>
+      Plausible analytics has been removed from the page.
     </p>
+    <h2>Took the survey?</h2>
     <p>
-      Plausible only picks up general information like which pages were visited,
-      how long people stayed, and rough device info (device type, OS, country,
-      browser). Nothing that points back to you. Also, if you use an ad blocker
-      like uBlock Origin, it&apos;ll block Plausible by default.
+      Your anonymized answers will be used to help me better understand the
+      sentiment behind cookie banner responses. Your IP addresses will get deleted
+      together with any emails once the research wraps up and I finish writing up
+      my thesis.
     </p>
-    <h2>Taking the survey?</h2>
-    <p>
-      When you submit your response, your answers travel securely (HTTPS) to a
-      server I control. Along with your answers, the server also logs your IP
-      address and browser details. I use this information to catch duplicate or
-      spam submissions, and they get deleted together with any emails once the
-      research wraps up.
-    </p>
-    <p>
-      Your answers only ever appear in an aggregated form, fully anonymized in
-      my thesis, never tied back to you.
-    </p>
-    <h2>Your email</h2>
-    <p>
-      Leaving your email is completely optional! It does exactly one job: allowing
-      me to send you your single-use code for a free sticker pack. Once that code&apos;s
-      been sent, your email has done its job and I will delete it, as there&apos;s no
-      reason to hang onto it.
-    </p>
-    <h2>How long do I keep data?</h2>
+    <h2>How long do I keep your data?</h2>
     <ul>
       <li>
         <span class="li-key">Emails and IP addresses</span> - deleted when the research ends
@@ -59,6 +38,10 @@ layout: layouts/main.webc
         <span class="li-key">Your answers</span> - kept anonymized as part of the thesis
       </li>
     </ul>
+    <p>
+      If you would like me to delete your email and IP address, or withdraw your
+      response before then feel free to get in touch.
+    </p>
     <p>
       Any questions? Feel free to reach out to me at <a href="mailto:hi@vukory.art" target="_blank">hi@vukory.art</a>! <span class="emojis" aria-hidden="true">💌</span>
     </p>
@@ -82,16 +65,6 @@ layout: layouts/main.webc
             <td>United States <span class="emojis" aria-hidden="true">🇺🇸</span></td>
           </tr>
           <tr>
-            <td>Falco&apos;s Tea Party</td>
-            <td>Self-Hosts <a href="https://plausible.falco.fun/survey.vukory.art" target="_blank">Plausible</a></td>
-            <td>United Kingdom <span class="emojis" aria-hidden="true">🇬🇧</span></td>
-          </tr>
-          <tr>
-            <td><a href="https://contabo.com/" target="_blank">Contabo</a></td>
-            <td>Hosts the server that stores survey responses</td>
-            <td>United Kingdom <span class="emojis" aria-hidden="true">🇬🇧</span></td>
-          </tr>
-          <tr>
             <td><a href="https://mailbox.org/" target="_blank">mailbox</a></td>
             <td>Hosts my inbox (your sticker code will get delivered from here)</td>
             <td>Germany <span class="emojis" aria-hidden="true">🇩🇪</span></td>
@@ -101,7 +74,7 @@ layout: layouts/main.webc
     </div>
   </div>
   <vuko-button id="return" href="/" @as="a">
-    <span aria-hidden="true">←</span> <span>Return to Survey</span>
+    <span aria-hidden="true">←</span> <span>Return</span>
   </vuko-button>
 </main>
 

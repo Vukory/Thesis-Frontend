@@ -3,7 +3,6 @@
  *
  * @typedef {object} Config
  * @property {string} baseUrl
- * @property {string} apiBaseUrl
  * @property {Environment} env Which environment/stage we're running on.
  */
 
@@ -17,13 +16,11 @@ function getConfig() {
     case 'production':
       return {
         baseUrl: 'https://survey.vukory.art',
-        apiBaseUrl: 'https://api.vukory.art',
         env: NODE_ENV,
       };
     case 'development':
       return {
         baseUrl: 'http://localhost:8080',
-        apiBaseUrl: 'http://localhost:8081',
         env: NODE_ENV,
       };
     default:
